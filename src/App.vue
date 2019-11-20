@@ -1,6 +1,8 @@
 <template>
   <div>
-    App
+    <div class="first">
+
+    </div>
   </div>
 </template>
 
@@ -10,6 +12,9 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
- 
+  .first
+    height 2px 
+    width 100
+    background pink
 </style>
 
