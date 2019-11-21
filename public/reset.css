@@ -81,3 +81,9 @@ th {
   padding: 0;
   text-align: left;
 }
+
+a {
+  color: #7e8c8d;
+  text-decoration: none;
+  -webkit-backface-visibility: hidden;
+}
