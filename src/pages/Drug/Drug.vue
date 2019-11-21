@@ -1,29 +1,25 @@
 <template>
-  <div id="g-baikeContent">
-    <header class="g-baikeHeader">
-      <div class="iconfont icon-fanhui fanhui"></div>
-      <span></span>
-      <i class="iconfont icon-sousu search"></i>
-    </header>
+  <div id="g-baikeDrug">
+    <CyclopediaHeader />
     <div class="g-maxRoll">
       <div class="maxRollContent">
         <!-- 导航 -->
         <ul class="g-baikeNav">
-          <li class="nav-tab active">
+          <li class="nav-tab" :class="{active:isShowNav}">
             <a href="">
               <img class="icon" src="//mstatic.soyoung.com/m/static/fe_m/view/wiki/img/icon_first_xiangmu1@2x-d1ee44e28c.png"></img>
               <!-- <img class="icon hover" src="//mstatic.soyoung.com/m/static/fe_m/view/wiki/img/icon_first_xiangmu@2x-8ab35d18d8.png"></img> -->
               <span>项目库</span>
             </a>
           </li>
-          <li class="nav-tab">
+          <li class="nav-tab" :class="{active:!isShowNav}">
             <a href="">
               <img class="icon" src="//mstatic.soyoung.com/m/static/fe_m/view/wiki/img/icon_first_drug1@2x-6bc3b4f6f9.png"></img>
               <!-- <img class="icon hover" src="//mstatic.soyoung.com/m/static/fe_m/view/wiki/img/icon_first_drug@2x-1b83dad8e3.png"></img> -->
               <span>药品库</span>
             </a>
           </li>
-          <li class="nav-tab">
+          <li class="nav-tab" :class="{active:!isShowNav}">
             <a href="">
               <img class="icon" src="//mstatic.soyoung.com/m/static/fe_m/view/wiki/img/icon_first_tool1@2x-a8ce8df63f.png"></img>
               <!-- <img class="icon hover" src="//mstatic.soyoung.com/m/static/fe_m/view/wiki/img/icon_first_tool@2x-3e3209b2ae.png"></img> -->
@@ -38,78 +34,10 @@
             </a>
           </li>
         </ul>
-        <!-- 轮播图 -->
-        <div class="g-baikeSwiper">
-          <div class="swiper-container">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="https://img2.soyoung.com/item/20180706/2/20180706114811804.png" alt="">
-                </a>
-                <!-- <div>
-                  <a href="">
-                    <img src="//mstatic.soyoung.com/m/static/fe_m/view/wiki/img/img_huodong@2x-5b8c7b944f.png" alt="">
-                    <div>暑期人气项目</div>
-                    <h4>居毕业热门整形项目榜首之一</h4>
-                  </a>
-                  <div>
-                    <a href="">
-                      <span>胶原蛋白隆鼻</span>
-                    </a>
-                    <a href="">
-                      <span>更多...</span>
-                    </a>
-                  </div>
-                </div> -->
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="https://img2.soyoung.com/item/20180706/1/20180706114937842.jpg" alt="">
-                </a>
-                <!-- <div>
-                  <a href="">
-                    <img src="//mstatic.soyoung.com/m/static/fe_m/view/wiki/img/img_huodong@2x-5b8c7b944f.png" alt="">
-                    <div>暑期人气项目</div>
-                    <h4>居毕业热门整形项目榜首之一</h4>
-                  </a>
-                  <div>
-                    <a href="">
-                      <span>胶原蛋白隆鼻</span>
-                    </a>
-                    <a href="">
-                      <span>更多...</span>
-                    </a>
-                  </div>
-                </div> -->
-              </div>
-              <div class="swiper-slide">
-                <a href="">
-                  <img src="https://img2.soyoung.com/item/20180706/3/20180706115022415.jpg" alt="">
-                </a>
-                <!-- <div>
-                  <a href="">
-                    <img src="//mstatic.soyoung.com/m/static/fe_m/view/wiki/img/img_huodong@2x-5b8c7b944f.png" alt="">
-                    <div>暑期人气项目</div>
-                    <h4>居毕业热门整形项目榜首之一</h4>
-                  </a>
-                  <div>
-                    <a href="">
-                      <span>胶原蛋白隆鼻</span>
-                    </a>
-                    <a href="">
-                      <span>更多...</span>
-                    </a>
-                  </div>
-                </div> -->
-              </div>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
         <!-- 热搜 -->
         <div class="g-topSearch">
           <div class="topSearch-text">
-            <p>— 热搜功效 —</p>
+            <p>— 热搜品牌 —</p>
           </div>
           <div class="topSearch-list">
             <ul class="content">
@@ -268,29 +196,20 @@
               </ul>
             </div>
           </div>
-          
-          
         </div>
       </div>
     </div>
-    
-
-
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import Swiper from 'swiper' 
-  import 'swiper/css/swiper.min.css'
   import BScroll from 'better-scroll'
+  import CyclopediaHeader from '../../components/CyclopediaHeader/CyclopediaHeader'
   export default {
+    components: {
+      CyclopediaHeader
+    },
     mounted() {
-      new Swiper('.swiper-container', {
-        loop: true,
-        pagination: {
-          el: '.swiper-pagination',
-        },
-      }),
       new BScroll('.g-maxRoll', {
         scrollY: true
       }),
@@ -299,33 +218,11 @@
         scrollX: true
       })
     }
-
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  #g-baikeContent
-    .g-baikeHeader
-      width 750px
-      height 88px
-      position fixed
-      top 0
-      left 0
-      z-index 10
-      display flex
-      justify-content: space-between
-      .fanhui
-        padding 30px
-      span
-        display inline-block
-        width 150px
-        height 38px
-        margin-top 24px
-        background url('//mstatic.soyoung.com/m/static/fe_m/view/wiki/img/img_baike@2x-19d9e7cf9d.png')
-        background-repeat no-repeat
-        background-size contain
-      .search
-        padding 30px
+   #g-baikeDrug
     .g-maxRoll
       margin-top 88px
       height calc(100vh - 88px)
@@ -354,12 +251,6 @@
                 font-size 24px
                 color #ffffff
                 text-align center 
-        .g-baikeSwiper
-          width 100%
-          height 400px
-          .swiper-container
-          img 
-            display block
         .g-topSearch
           height 297px
           .topSearch-text
@@ -436,7 +327,5 @@
                   line-height 64px
                   color #333
                   font-size 24px
-
-
-
+ 
 </style>
