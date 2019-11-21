@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="first">
-
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -12,9 +10,6 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .first
-    height 2px 
-    width 100
-    background pink
+  
 </style>
 
