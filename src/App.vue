@@ -13,8 +13,8 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   .first
-    height 2px 
-    width 100
+    height 300px 
+    width 690px
     background pink
 </style>
 
