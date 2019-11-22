@@ -55,7 +55,8 @@
     mounted() {
       new BScroll('.g-maxRoll', {
         click: true,
-        scrollY: true
+        scrollY: true,
+        bounce: false
       })
     }
   }
