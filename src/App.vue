@@ -3,7 +3,7 @@
     <!-- <Login /> -->
     <Cyclopedia />
     <!-- <Durg></Durg> -->
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
