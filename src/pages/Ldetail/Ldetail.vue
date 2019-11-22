@@ -25,13 +25,7 @@
         </li>
       </ul>
       <!-- 轮播导航图 -->
-      <span class="total-current">
-        <span class="current">2</span>
-        <span class="total">
-          <span>|</span>
-          4
-        </span>
-      </span>
+      <div class="swiper-pagination"></div>
     </div>
     <div class="Ldetail-footer">
       <div class="footer-total">
@@ -61,6 +55,15 @@
     mounted(){
       new Swiper('.swiper-container',{
         autoplay: false,//可选选项，自动滑动
+         pagination: {
+                el: '.swiper-pagination',
+                type: 'fraction',
+                renderFraction: function (currentClass, totalClass) {
+                  return '<span class="' + currentClass + '"></span>' +
+                        '|' +
+                        '<span class="' + totalClass + '"></span>';
+                },
+          },
         
       })
 
@@ -100,10 +103,10 @@
             display block
             width 750px
             height 750px
-      .total-current
+      .swiper-pagination
         position absolute
         bottom 40px
-        right 30px
+        left 650px
         width 64px
         height 48px
         background #eee 
