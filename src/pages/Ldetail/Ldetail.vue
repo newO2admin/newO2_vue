@@ -1,7 +1,7 @@
 <template>
     <div>
       <!-- 头部导航 -->
-      <div class="header-nav" ref="nav">
+      <div class="header-nav" :style="{opacity:opacity}" ref="nav">
         <div class="header-nav-item active">商品</div>
         <div class="header-nav-item">评价</div>
         <div class="header-nav-item">日记</div>
@@ -285,7 +285,7 @@
   export default {
     data(){
       return {
-        opcity: 0
+        opacity: 0
       }
     },
     computed: {
@@ -312,7 +312,13 @@
 
       this.scroll1 = new BScroll(this.$refs.wrapper1, {
         scrollX: false,
-        scrollY: true
+        scrollY: true,
+        probeType:3,
+      })
+      this.scroll1.on('scroll', (pos) => {
+          this.opacity =  -pos.y/100
+          console.log(this.opacity)
+          console.log(this)
       })
       
       
@@ -685,6 +691,7 @@
       font-size 28px
       color #fff
   .header-nav
+    background #fff
     z-index 99
     position fixed
     left 0
