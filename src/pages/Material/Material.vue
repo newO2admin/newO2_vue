@@ -32,8 +32,8 @@
           </li>
           <li>
             <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/1/20180306140718148.jpg" alt="">
-              <span>面部填充</span>
+              <img src="https://img2.soyoung.com/item/20171025/3/20171025223418693.jpg" alt="">
+              <span>韩士生科</span>
             </a>
           </li>
           <li>
@@ -44,7 +44,7 @@
           </li>
           <li>
             <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/5/20180306140727748.jpg" alt="">
+              <img src="https://img2.soyoung.com/item/20171103/3/20171103190100493.jpg" alt="">
               <span>补水保湿</span>
             </a>
           </li>

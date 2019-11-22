@@ -8,8 +8,8 @@
         <ul class="content">
           <li>
             <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/5/20180306140651565.jpg" alt="">
-              <span>瘦脸</span>
+              <img src="https://img2.soyoung.com/item/20171103/4/20171103185912803.jpg" alt="">
+              <span>保妥适</span>
             </a>
           </li>
           <li>

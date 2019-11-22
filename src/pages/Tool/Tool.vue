@@ -8,8 +8,8 @@
         <ul class="content">
           <li>
             <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/5/20180306140651565.jpg" alt="">
-              <span>瘦脸</span>
+              <img src="https://img2.soyoung.com/item/20171025/2/20171025221642822.jpg" alt="">
+              <span>蜂巢皮秒</span>
             </a>
           </li>
           <li>
