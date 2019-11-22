@@ -30,7 +30,7 @@
     </nav>
     <!-- 导航小图标 -->
     <nav class="msite_nav_ico">
-      <div class="ico_container">
+      <div class="swiper-container ico_container">
         <div class="swiper-wrapper ico_wrapper">
           <div class="swiper-slide ico_slide">
             <a href="javascript:" class="link_to_pro">
@@ -407,19 +407,20 @@ import 'swiper/css/swiper.min.css'
       border-radius 20px
       line-height 64px
       background #eee
+      margin-left 10px
       .iconfont
         display block
         position absolute
-        left 0px
+        left 5px
         top 0px
         width 10px
         height 10px
         z-index 3
-        color red
+        color grey
         // background red
       .title
         display block
-        margin-left 10px
+        margin-left 40px
         color grey
   .login-icon
     margin-left 30px
