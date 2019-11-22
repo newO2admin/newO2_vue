@@ -11,7 +11,7 @@ new Vue ({
   components: {App},
   template: '<App />',
   //安装路由
-  router
+  router,
 })
 // new Vue({
 //   render: h => h(App),
