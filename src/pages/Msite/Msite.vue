@@ -33,11 +33,11 @@
       <div class="swiper-container ico_container">
         <div class="swiper-wrapper ico_wrapper">
           <div class="swiper-slide ico_slide">
-            <a href="javascript:" class="link_to_pro">
+            <a href="javascript:" class="link_to_pro" @click="goPath('/categroy')">
               <div class="pro_container">
                 <img src="../../assets/images/nav/1.webp">
               </div>
-              <span>面部轮廓</span>
+              <span>面部跳转</span>
             </a>
             <a href="javascript:" class="link_to_pro">
               <div class="pro_container">
@@ -164,12 +164,12 @@
     <!-- 导航小广告 -->
     <nav class="nav_ad wrapper"> 
       <ul class="ad_list content">
-        <li class="ad_item">
+        <li class="ad_item" @click="goPath('/')">
           <div class="title">医美百科</div>
           <div class="subtitle">项目知识</div>
         </li>
-        <li class="ad_item">
-          <div class="title">医美百科</div>
+        <li class="ad_item" @click="goPath('/categroy')">
+          <div class="title">美丽日记</div>
           <div class="subtitle">项目知识</div>
         </li>
         <li class="ad_item">
@@ -390,7 +390,13 @@ import 'swiper/css/swiper.min.css'
           el: '.swiper-pagination',
         },
       })
-    }
+    },
+    methods:{
+      goPath(path){
+        this.$router.replace(path)
+      },
+    },
+
   }
 </script>
 
