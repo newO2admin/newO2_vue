@@ -1,5 +1,4 @@
 import Msite from '../pages/Msite/Msite.vue'
-import Beautiful from '../pages/beautiful/beautiful.vue'
 import Lcategory from '../pages/Lcategory/Lcategory.vue'
 import Ldetail from '../pages/Ldetail/Ldetail.vue'
 
@@ -8,10 +7,6 @@ export default [
   {
     path: '/msite',
     component: Msite,
-  },
-  {
-    path: '/beautiful',
-    component: Beautiful,
   },
   {
     path: '/lcategory',
@@ -23,6 +18,6 @@ export default [
   },
   {
     path: '/',
-    redirect: '/ldetail'
+    redirect: '/lcategory'
   }
 ]
