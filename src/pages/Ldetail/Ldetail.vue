@@ -1,5 +1,6 @@
 <template>
   <div id="Ldetail">
+    <!-- 头部导航 -->
     <div class="header-nav">
       <div class="header-nav-item active">商品</div>
       <div class="header-nav-item">评价</div>
@@ -7,6 +8,7 @@
       <div class="header-nav-item">详情</div>
       <div class="header-nav-item">推荐</div>
     </div>
+    <!-- 轮播图 -->
     <div class="swiper-container">
       <ul class="swiper-wrapper">
         <li class="swiper-slide">
@@ -22,6 +24,14 @@
           <img src="https://img2.soyoung.com/post/20190910/1/f486a58ee5f25de04f81b538c0b2c5e9_400.png?imageView2/0/format/webp" alt="">
         </li>
       </ul>
+      <!-- 轮播导航图 -->
+      <span class="total-current">
+        <span class="current">2</span>
+        <span class="total">
+          <span>|</span>
+          4
+        </span>
+      </span>
     </div>
     <div class="Ldetail-footer">
       <div class="footer-total">
@@ -50,7 +60,7 @@
   export default {
     mounted(){
       new Swiper('.swiper-container',{
-        autoplay: true,//可选选项，自动滑动
+        autoplay: false,//可选选项，自动滑动
         
       })
 
@@ -62,6 +72,7 @@
 <style scoped lang='stylus' rel='stylesheet/stylus'>
   #Ldetail
     .header-nav
+      z-index 99
       position fixed
       left 0
       top 0
@@ -76,6 +87,7 @@
         &.active
           border-bottom 5px solid #29D6C7
     .swiper-container
+      position relative
       width 100%
       height 750px
       .swiper-wrapper
@@ -88,7 +100,17 @@
             display block
             width 750px
             height 750px
-
+      .total-current
+        position absolute
+        bottom 40px
+        right 30px
+        width 64px
+        height 48px
+        background #eee 
+        z-index 10  
+        line-height 48px
+        text-align center 
+        border-radius 30px  
 
     .Ldetail-footer
       width 100%
