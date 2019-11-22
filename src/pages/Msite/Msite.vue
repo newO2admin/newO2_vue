@@ -219,11 +219,11 @@
           <ul class="footLeftList">
             <li class="footLeftItem">
               <div class="footerBox">
-                <img class="boxImg" src="../../images/ad/foot.webp" alt="">
+                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
                 <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
               </div>
               <div class="footIcon">
-                <img class="icon1" src="../../images/ad/foot.webp" alt="">
+                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
                 <i class="userName">昆明市延安医院杰西艾美容医院</i>
               </div>
               <div class="footLike">
@@ -233,11 +233,11 @@
             </li>
             <li class="footLeftItem">
               <div class="footerBox">
-                <img class="boxImg" src="../../images/ad/foot.webp" alt="">
+                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
                 <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
               </div>
               <div class="footIcon">
-                <img class="icon1" src="../../images/ad/foot.webp" alt="">
+                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
                 <i class="userName">昆明市延安医院杰西艾美容医院</i>
               </div>
               <div class="footLike">
@@ -247,25 +247,39 @@
             </li>
             <li class="footLeftItem">
               <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/tieba/android/post/20191119/9/8c35f2e4fb9c570e69349f23e94a83c3_540_540.jpg?imageView2/0/format/webp" alt="">
+                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
                 <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
               </div>
-              <div class="footIcon clearFix">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
+              <div class="footIcon">
+                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
                 <i class="userName">昆明市延安医院杰西艾美容医院</i>
               </div>
-              <div class="footLike clearFix">
+              <div class="footLike">
                 <i>❤</i>
                 <span>10</span>
               </div>
             </li>
             <li class="footLeftItem">
               <div class="footerBox">
-                <img class="boxImg" src="../../images/ad/foot.webp" alt="">
+                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
                 <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
               </div>
               <div class="footIcon">
-                <img class="icon1" src="../../images/ad/foot.webp" alt="">
+                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
+                <i class="userName">昆明市延安医院杰西艾美容医院</i>
+              </div>
+              <div class="footLike">
+                <i>❤</i>
+                <span>10</span>
+              </div>
+            </li>
+            <li class="footLeftItem">
+              <div class="footerBox">
+                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
+                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
+              </div>
+              <div class="footIcon">
+                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
                 <i class="userName">昆明市延安医院杰西艾美容医院</i>
               </div>
               <div class="footLike">
