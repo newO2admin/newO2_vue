@@ -14,12 +14,47 @@
     <main>
       <form class="login-quick" :class="{on:!isPassWordLogin}" action="">
         <div class="form-group">
-          <button type="button" class="form-select">
-            <span>+86</span>
+          <button 
+            type="button" 
+            class="form-select"
+            @click="changeSelect">
+            <span ref="phoneWrap">+86</span>
             <i class="iconfont icon-xiala xiala"></i>
           </button>
           <div class="input-wrap">
             <input type="tel" class="form-input" placeholder="请输入手机号">
+          </div>
+          <div class="bsWrapper"  :class="{active:isShowSelect}">
+            <ul class="phoneSelect">
+              <li :class="{active:isShowPhoneColor}" @click="isShowPhoneColor=true">
+                <span ref="phone">+86</span>
+                <span>中国大陆</span>
+              </li>
+              <li :class="{active:isShowPhoneColor}" @click="isShowPhoneColor=true">
+                <span>+1</span>
+                <span>美国</span>
+              </li>
+              <li>
+                <span>+82</span>
+                <span>韩国</span>
+              </li>
+              <li>
+                <span>+81</span>
+                <span>日本</span>
+              </li>
+              <li>
+                <span>+61</span>
+                <span>澳大利亚</span>
+              </li>
+              <li>
+                <span>+1</span>
+                <span>加拿大</span>
+              </li>
+              <li>
+                <span>+44</span>
+                <span>英国</span>
+              </li>
+            </ul>
           </div>
         </div>
         <div class="form-group">
@@ -60,12 +95,30 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import BScroll from 'better-scroll'
   export default {
     data() {
       return {
-        isPassWordLogin: true 
+        isPassWordLogin: true,
+        isShowSelect: false,
+        isShowPhoneColor: false,
+        count: 0
       }
-    }
+    },
+    mounted() {
+      new BScroll('.bsWrapper', {
+        click: true,
+        scrollY: true,
+        scrollX: false,
+        bounce: false
+      })
+    },
+    methods: {
+      changeSelect() {
+        this.isShowSelect = !this.isShowSelect
+        this.count += 180
+      },
+    },
   }
 </script>
 
@@ -151,6 +204,33 @@
               outline none
             ::-webkit-input-placeholder
                 color #ffffff
+          .bsWrapper
+            position absolute
+            top 90px
+            left 0
+            height 0
+            overflow hidden
+            transition height .8s
+            &.active
+              height 560px
+            .phoneSelect
+              background-color white
+              box-sizing border-box
+              overflow hidden
+              z-index 999
+              overflow hidden
+              li
+                display flex
+                justify-content space-between
+                width 624px
+                padding 0 30px
+                height 90px
+                line-height 90px
+                color #777
+                font-size 28px
+                &.active
+                  color #00b6b3
+            
           .msg-wrap
             width 400px
             height 90px
@@ -210,6 +290,7 @@
             border none 
             outline none
             padding 0 20px
+            color #ffffff
             background-color transparent
           ::-webkit-input-placeholder
             color #ffffff

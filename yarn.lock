@@ -7672,7 +7672,6 @@ svgo@^1.0.0:
 
 swiper@^5.2.1:
   version "5.2.1"
-  resolved "https://registry.npm.taobao.org/swiper/download/swiper-5.2.1.tgz?cache=0&sync_timestamp=1574250298651&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fswiper%2Fdownload%2Fswiper-5.2.1.tgz#72070777b9efb1318546ba48d7154939cd170196"
   resolved "https://registry.npm.taobao.org/swiper/download/swiper-5.2.1.tgz?cache=0&sync_timestamp=1574249719653&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fswiper%2Fdownload%2Fswiper-5.2.1.tgz#72070777b9efb1318546ba48d7154939cd170196"
   integrity sha1-cgcHd7nvsTGFRrpI1xVJOc0XAZY=
   dependencies:
@@ -8117,6 +8116,11 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+
+vee-validate@^3.0.11:
+  version "3.0.11"
+  resolved "https://registry.npm.taobao.org/vee-validate/download/vee-validate-3.0.11.tgz#5ffe3d501893801529186642d20241cf632f1341"
+  integrity sha1-X/49UBiTgBUpGGZC0gJBz2MvE0E=
 
 vendors@^1.0.0:
   version "1.0.3"

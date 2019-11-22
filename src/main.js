@@ -3,6 +3,7 @@ import App from './App.vue'
 import 'lib-flexible/flexible'
 
 import router from './router'
+import './veevalidate'
 
 Vue.config.productionTip = false
 
