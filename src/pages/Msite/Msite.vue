@@ -164,11 +164,11 @@
     <!-- 导航小广告 -->
     <nav class="nav_ad wrapper"> 
       <ul class="ad_list content">
-        <li class="ad_item" @click="goPath('/')">
+        <li class="ad_item" @click="goPath('/cyclopedia')">
           <div class="title">医美百科</div>
           <div class="subtitle">项目知识</div>
         </li>
-        <li class="ad_item" @click="goPath('/categroy')">
+        <li class="ad_item" @click="goPath('/beautiful')">
           <div class="title">美丽日记</div>
           <div class="subtitle">项目知识</div>
         </li>
@@ -198,17 +198,7 @@
     <div class="feed-tab">
       <div class="tab">
         <ul class="tabList">
-          <li class="tabItem active"><span>推荐</span></li>
-          <li class="tabItem"><span>鼻部</span></li>
-          <li class="tabItem"><span>眼部</span></li>
-          <li class="tabItem"><span>面部轮廓</span></li>
-          <li class="tabItem"><span>齿科</span></li>
-          <li class="tabItem"><span>面部轮廓</span></li>
-          <li class="tabItem"><span>胸部</span></li>
-          <li class="tabItem"><span>臀部</span></li>
-          <li class="tabItem"><span>玻尿酸</span></li>
-          <li class="tabItem"><span>美体塑形</span></li>
-          <li class="tabItem"><span>肉霉素</span></li>
+          <li class="tabItem" :class="{active:show===index}" v-for="(footItem, index) in datas" :key="index" @click="toShow(index)"><span>{{footItem}}</span></li>
         </ul>
       </div>
     </div>
@@ -231,134 +221,22 @@
                 <span>10</span>
               </div>
             </li>
-            <li class="footLeftItem">
-              <div class="footerBox">
-                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footLeftItem">
-              <div class="footerBox">
-                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footLeftItem">
-              <div class="footerBox">
-                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footLeftItem">
-              <div class="footerBox">
-                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
           </ul>
         </div>
         <div class="footRight">
           <ul class="footRightList">
-            <li class="footRightItem">
+            <li class="footRightItem" v-for="(footItem, index) in footDatas" :key="index">
               <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/face/tieba/web/20190702/2/4544dab96170fee5f38c670c7be031a5_344_344.jpg?v=1" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
+                <img class="boxImg" :src="footItem.bigImg" alt="">
+                <p class="boxTitle">{{footItem.bigTitle}}</p>
               </div>
               <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
+                <img class="icon1" :src="footItem.sameImg" alt="">
+                <i class="userName">{{footItem.smallTitle}}</i>
               </div>
               <div class="footLike">
                 <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footRightItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/face/tieba/web/20190702/2/4544dab96170fee5f38c670c7be031a5_344_344.jpg?v=1" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footRightItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/face/tieba/web/20190702/2/4544dab96170fee5f38c670c7be031a5_344_344.jpg?v=1" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footRightItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/face/tieba/web/20190702/2/4544dab96170fee5f38c670c7be031a5_344_344.jpg?v=1" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footRightItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/face/tieba/web/20190702/2/4544dab96170fee5f38c670c7be031a5_344_344.jpg?v=1" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
+                <span>{{footItem.number}}</span>
               </div>
             </li>
           </ul>
@@ -371,13 +249,26 @@
 import Swiper from 'swiper'
 import BScroll from 'better-scroll'
 import 'swiper/css/swiper.min.css'
+
+import datas from '../../data/foot.json'
+import footDatas from '../../data/footItem.json'
   export default {
+    data(){
+      return {
+        show: 0,
+        datas:[],
+        footDatas:[]
+      }
+    },
     mounted(){
+      this.datas = datas
+      this.footDatas = footDatas
       new BScroll('.wrapper', {
         scrollX: true,
       })
       new BScroll('.tab', {
         scrollX: true,
+        click:true
       })
       new Swiper('.swiper-container', {
         autoplay: true,//可选选项，自动滑动
@@ -395,7 +286,13 @@ import 'swiper/css/swiper.min.css'
       goPath(path){
         this.$router.replace(path)
       },
+      toShow(index){
+        this.show = index
+      }
     },
+    computed:{
+    
+    }
 
   }
 </script>
