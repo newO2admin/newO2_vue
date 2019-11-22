@@ -1,60 +1,47 @@
 <template>
   <div id="shareContainer">
     <div class="user_name">
-      <img src="../../assets/01.jpg" alt="">
+      <img :src="user.avatar.u" alt="">
       <div class="info">
         <p class="title">
-          <span class="naem">阿宝乖乖</span>
+          <span class="naem">{{user.user_name}}</span>
           <span class="vip"></span>
         </p>
-        <p class="time">6月8日</p>
+        <p class="time">{{user.create_date_str}}</p>
       </div>
     </div>
     <div class="user_photo">
       <span class="left">
-        <img src="../../assets/01.jpg" alt="">
+        <img :src="user.top.img.u" alt="">
         <i>Before</i>
       </span>
       <span class="right">
-        <img src="../../assets/01.jpg" alt="">
-        <i>D+120天</i>
+        <img :src="user.middle.img.u" alt="">
+        <i>D+{{user.top.day_num}}天</i>
       </span>
     </div>
     <p class="describe">
-      做完面部吸脂5个月了。恢复的挺不错的。最近马上要国庆了。突然就爱国情怀上脑了。特别想去看天安门升旗。当天4点就起床了。打车跑去了天安门。平时聊天或者听到天安门升旗真的没什么感觉。但是一到那直接感受确实不
+      {{user.top.summary}}
     </p>
     <div class="label">
-      <span class="topic">
+      <span class="topic" v-for="(item, index) in itemArr" :key="index" >
         <span class="topic_id">#</span>
-        <span class="topci_text">术后当自强</span>
+        <span class="topci_text">{{item.item_name}}</span>
       </span>
-      <div class="topic">
-        <span class="topic_id">#</span>
-        <span class="topci_text">术后当自强</span>
-      </div>
-      <div class="topic">
-        <span class="topic_id">#</span>
-        <span class="topci_text">术后当自强</span>
-      </div>
-      <div class="topic">
-        <span class="topic_id">#</span>
-        <span class="topci_text">术后当自强</span>
-      </div>
-      
     </div>
     <p class="pirce">
       <i></i>
       <span class="place">
-        <span>【面部吸脂】</span>
-        <span>北京亚楠容悦医疗美容诊所</span>
+        <span>【{{user.end.item_name}}】</span>
+        <span>{{user.end.hospital_name}}</span>
       </span>
-      <span class="pirce_num">¥5999</span>
+      <span class="pirce_num">¥{{user.end.price}}</span>
     </p>
     <div class="reading">
-      <span class="left">6万+人已看</span>
+      <span class="left">{{user.end.view_cnt}}人已看</span>
       <div class="heart">
-        <span class="center">icon图标 130</span>
-        <span class="right">icon图标 830</span>
+        <span class="center">icon图标 {{user.end.comment_cnt}}</span>
+        <span class="right">icon图标 {{user.end.favor_cnt}}</span>
       </div>
     </div>
   </div>
@@ -62,6 +49,26 @@
 
 <script type="text/ecmascript-6">
   export default {
+    props:{
+      user: {
+        type:Object,
+        required:true
+      }
+    },
+    // data(){
+    //   // item :[]
+    // },
+    // mounted(){
+
+    // },
+    computed: {
+      itemArr(){
+        let {user} = this
+        let classArr = []
+        classArr = user.item
+        return classArr
+      }
+    }
   }
 </script>
 
@@ -107,6 +114,9 @@
         border-radius 20px
         overflow hidden
         position relative
+        img 
+          width 100%
+          height 100%
         i 
           padding-right 20px
           color #fff
@@ -136,11 +146,11 @@
     .label
       width 100%
       height 36px
-      display flex
+      // display flex
       // background pink
       margin-right 50px
-      // white-space nowrap
-      // text-overflow ellipsis
+      white-space nowrap
+      text-overflow ellipsis
       overflow hidden
       .topic 
         margin-right 20px

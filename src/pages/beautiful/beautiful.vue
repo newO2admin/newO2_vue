@@ -964,16 +964,11 @@
       </div>
     </div>
     <div class="main-body wrapper">
-      <div class="content"> 
-        <BeautifulShare/>
-        <BeautifulShare/>
-        <BeautifulShare/>
-        <BeautifulShare/>
-        <BeautifulShare/>
+      <div class="content" > 
+        <a v-for="(user, index) in userArr" :key="index">
+          <BeautifulShare :user="user"/>
+        </a>
       </div>
-
-        
-     
     </div>
   </div>
 </template>
@@ -982,14 +977,16 @@
 import BScroll from 'better-scroll'
 // import PullUp from '@better-scroll/pull-up'
 
-import BeautifulShare from '../../components/beautifulShare/beautifulShare'
 import user from '../../assets/data/user.json'
+import BeautifulShare from '../../components/beautifulShare/beautifulShare'
   export default {
     components:{
       BeautifulShare
     },
     data(){
-      
+      return {
+        userArr: []
+      }
     },
     mounted(){
       let bs = new BScroll('.wrapper', {
@@ -1008,7 +1005,7 @@ import user from '../../assets/data/user.json'
         // pullUpLoad: true
         scrollY: true
       })
-      
+      this.userArr = user.responseData.list
     }
   }
 </script>
