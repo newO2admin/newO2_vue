@@ -12,7 +12,7 @@ export default [
     component: Beautiful,
   },
 
-  {
+  {  
     path: '/',
     redirect: '/msite'
   }

@@ -1004,6 +1004,7 @@ import BeautifulShare from '../../components/beautifulShare/beautifulShare'
         // pullUpLoad: true
         scrollY: true
       })
+      
     }
   }
 </script>
