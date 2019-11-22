@@ -83,6 +83,7 @@ th {
 }
 
 a {
+  color: #7e8c8d;
   text-decoration: none;
-  color: #000;
+  -webkit-backface-visibility: hidden;
 }

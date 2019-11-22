@@ -21,8 +21,9 @@ export default [
     path: '/ldetail',
     component: Ldetail
   },
+
   {
     path: '/',
-    redirect: '/ldetail'
+    redirect: '/msite'
   }
 ]
