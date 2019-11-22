@@ -983,9 +983,13 @@ import BScroll from 'better-scroll'
 // import PullUp from '@better-scroll/pull-up'
 
 import BeautifulShare from '../../components/beautifulShare/beautifulShare'
+import user from '../../assets/data/user.json'
   export default {
     components:{
       BeautifulShare
+    },
+    data(){
+      
     },
     mounted(){
       let bs = new BScroll('.wrapper', {
