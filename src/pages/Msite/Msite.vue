@@ -403,6 +403,11 @@ import 'swiper/css/swiper.min.css'
     padding 20px
     display flex 
     box-sizing border-box
+    position fixed
+    top 0px
+    left 0px
+    z-index 5
+    background #fff
   .topMain
     display flex 
     .cityName
@@ -429,7 +434,7 @@ import 'swiper/css/swiper.min.css'
         top 0px
         width 10px
         height 10px
-        z-index 3
+        z-index 6
         color grey
         // background red
       .title
@@ -438,10 +443,13 @@ import 'swiper/css/swiper.min.css'
         color grey
   .login-icon
     margin-left 30px
+    position absolute
+    right 60px
+    top -80px
     width 60px
     height 60px
   .msite_nav
-    bottom-border-1px(#e4e4e4)
+    margin-top 104px
     height 260px
     background #fff
     box-sizing border-box 
@@ -621,7 +629,7 @@ import 'swiper/css/swiper.min.css'
               border-radius 50%
               position absolute
               .icon1
-                z-index 3
+                z-index 2
                 display block
                 width 40px
                 height 40px
@@ -630,7 +638,7 @@ import 'swiper/css/swiper.min.css'
                 left 10px
                 top 10px
               .userName
-                z-index 3
+                z-index 2
                 display block
                 white-space  nowrap
                 overflow hidden
@@ -675,7 +683,7 @@ import 'swiper/css/swiper.min.css'
           border-radius 50%
           position absolute
           .icon1
-            z-index 3
+            z-index 2
             display block
             width 40px
             height 40px
@@ -684,7 +692,7 @@ import 'swiper/css/swiper.min.css'
             left 10px
             top 10px
           .userName
-            z-index 3
+            z-index 2
             display block
             white-space  nowrap
             overflow hidden
