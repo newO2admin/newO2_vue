@@ -265,6 +265,7 @@ import footDatas from '../../data/footItem.json'
       this.footDatas = footDatas
       new BScroll('.wrapper', {
         scrollX: true,
+        click:true
       })
       new BScroll('.tab', {
         scrollX: true,
