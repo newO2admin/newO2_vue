@@ -5,7 +5,7 @@ import Tool from '../pages/Tool/Tool'
 import Zhuye from '../pages/Zhuye/Zhuye'
 import Login from '../pages/Login/Login'
 import Beautiful from '../pages/beautiful/beautiful.vue'
-import Beautiful from '../pages/'
+import UserBeautiful from '../pages/userBeautiful/userBeautiful.vue'
 
 import Msite from '../pages/Msite/Msite.vue'
 import Categroy from '../pages/Categroy/Categroy.vue'
@@ -22,8 +22,8 @@ export default [
     component: Beautiful,
     children:[
       {
-        path: '/beautiful/zhuye',
-        component: Zhuye
+        path: '/beautiful/userbeautiful',
+        component: UserBeautiful
       }
     ]
   },
