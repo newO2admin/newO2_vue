@@ -168,7 +168,7 @@
           <div class="title">医美百科</div>
           <div class="subtitle">项目知识</div>
         </li>
-        <li class="ad_item" @click="goPath('/beautiful')">
+        <li class="ad_item" @click="goPath('/sjld')">
           <div class="title">美丽日记</div>
           <div class="subtitle">项目知识</div>
         </li>

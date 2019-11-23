@@ -15,13 +15,25 @@
     <div class="navList">
       <ul>
         <li 
-        @click="changeItem(index)" v-for="(item, index) in items" :key="index"
+        @click="changeItem(index,item)" 
+        v-for="(item, index) in items" :key="index"
         :class="{active: showItem == index }" 
         v-show="!show"
         >{{item.name}}</li>
       </ul>
+      <div class="navItem">
+        <ul>
+          <li 
+          @click="changeitemChild(index,itemChild)" 
+          v-for="(itemChild,index) in itemsChild" :key="index"
+          :class="{active: showChildItem == index }"
+          v-show="!show"
+          >{{itemChild.name}}</li>
+        </ul>
+      </div>
     </div>
-  </div>
+    </div>
+    
 </template>
 
 <script type="text/ecmascript-6">
@@ -31,8 +43,10 @@
       return{
         show:true,
         showItem:0,
+        showChildItem:0,
         datas:{},
-        items:[]
+        items:[],
+        itemsChild:[]
       }
     },
     mounted(){
@@ -43,8 +57,12 @@
       change(){
         this.show = !this.show
       },
-      changeItem(index){
+      changeItem(index,item){
         this.showItem = index
+        this.itemsChild = item.menu2
+      },
+      changeitemChild(index, itemChild){
+        this.showChildItem = index
       }
     }
   }
@@ -80,6 +98,7 @@
           &.active
             color #2cc7c5
   .navList
+    display flex
     ul
       li
         display block
@@ -87,6 +106,12 @@
         height 60px
         &.active
           background green
-
-
+    .navItem
+      ul
+        li
+          display block
+          width 200px
+          height 60px
+          &.active
+            background green
 </style>

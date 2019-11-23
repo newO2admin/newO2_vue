@@ -1,6 +1,6 @@
 import Msite from '../pages/Msite/Msite.vue'
 import Categroy from '../pages/Categroy/Categroy.vue'
-import Beautiful from '../pages/Beautiful/Beautiful.vue'
+import Sjld from '../pages/Sjld/Sjld.vue'
 import Cyclopedia from '../pages/Cyclopedia/Cyclopedia.vue'
 //放置路由
 export default [
@@ -17,8 +17,8 @@ export default [
     component:Cyclopedia,
   },
   {
-    path:'/beautiful',
-    component:Beautiful,
+    path:'/sjld',
+    component:Sjld,
   },
   {
     path: '/',
