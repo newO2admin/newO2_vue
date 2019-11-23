@@ -1,6 +1,7 @@
 // store对象
 import Vue from 'vue'
 import Vuex from 'vuex'
+import beautiful from './modules/beautiful'
 
 
 import state from './state'
@@ -12,6 +13,9 @@ Vue.use(Vuex)
 
 // 生成并向外暴露一个store对象
 export default new Vuex.Store({
+  modules: {
+    beautiful
+  },
   state,
   mutations,
   actions,
