@@ -1,8 +1,5 @@
 <template>
   <div id="shareContainer">
-    12
-    <img :src="user.avatar.u" alt="">
-12
     <div class="user_name">
       <img :src="user.avatar.u" alt="">
       <div class="info">
