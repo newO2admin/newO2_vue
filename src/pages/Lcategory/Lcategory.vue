@@ -4,7 +4,7 @@
       <span class="header_title">
         <span class="header_title_text ">面部轮廓</span>
       </span> 
-      <span class="lcategory_back"> < </span> 
+      <span class="lcategory_back" @click="$router.back()"> < </span> 
     </div>
     <div class="filter-group">
       <div class="inner">
