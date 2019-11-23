@@ -5,7 +5,7 @@
           <span class="header_title">
             <span class="header_title_text ">面部轮廓</span>
           </span> 
-          <span class="lcategory_back" @click="$router.back()"> < </span> 
+          <span class="lcategory_back" @click="$router.replace('/msite')"> < </span> 
         </div>
         <div class="filter-group">
           <div class="inner">
@@ -32,7 +32,7 @@
         <div class="blank"></div>
         <div class="wrapper">
           <ul class="product-list">
-            <li class="product-item" v-for="item in 10" :key="item">
+            <li class="product-item" v-for="item in 10" :key="item" @click="$router.push('/ldetail')">
               <a href="javascript:" class="link-info">
                 <img class="hot_pic" v-lazy="`https://img2.soyoung.com/post/20191113/7/dc60bd535b2dc189b165050a1500a084_400.png`" alt="">
                 <div class="hot_text">
@@ -168,7 +168,7 @@
     mounted(){
         this.scroll3 = new BScroll('.wrapper', {
             scrollY: true, // 设置纵向滑动
-            // click: true,  //设置是否可以点击
+             click: true,  //设置是否可以点击
           })
         // console.log('xxx')
         // console.log(responseData.menu1_info)
