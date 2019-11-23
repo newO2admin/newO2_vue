@@ -207,25 +207,25 @@
       <div class="foot">
         <div class="footLeft">
           <ul class="footLeftList">
-            <li class="footLeftItem">
+            <li class="footLeftItem" v-for="(footItem, index) in rFootDatas" :key="index">
               <div class="footerBox">
-                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
+                <img class="boxImg" :src="footItem.bigImg" alt="">
+                <p class="boxTitle">{{footItem.bigTitle}}</p>
               </div>
               <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
+                <img class="icon1" :src="footItem.sameImg" alt="">
+                <i class="userName">{{footItem.smallTitle}}</i>
               </div>
               <div class="footLike">
                 <i>❤</i>
-                <span>10</span>
+                <span>{{footItem.number}}</span>
               </div>
             </li>
           </ul>
         </div>
         <div class="footRight">
           <ul class="footRightList">
-            <li class="footRightItem" v-for="(footItem, index) in footDatas" :key="index">
+            <li class="footRightItem" v-for="(footItem, index) in lFootDatas" :key="index">
               <div class="footerBox">
                 <img class="boxImg" :src="footItem.bigImg" alt="">
                 <p class="boxTitle">{{footItem.bigTitle}}</p>
@@ -243,6 +243,7 @@
         </div>
       </div>
     </div>
+    <div class="footText">没有更多....</div>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -257,12 +258,14 @@ import footDatas from '../../data/footItem.json'
       return {
         show: 0,
         datas:[],
-        footDatas:[]
+        lFootDatas:[],
+        rFootDatas:[]
       }
     },
     mounted(){
       this.datas = datas
-      this.footDatas = footDatas
+      this.lFootDatas = footDatas[0]
+      this.rFootDatas = footDatas[1]
       new BScroll('.wrapper', {
         scrollX: true,
         click:true
@@ -349,7 +352,7 @@ import footDatas from '../../data/footItem.json'
     margin-left 30px
     position absolute
     right 60px
-    top -80px
+    top 20px
     width 60px
     height 60px
   .msite_nav
@@ -499,12 +502,10 @@ import footDatas from '../../data/footItem.json'
           bottom-border-1px(#0FD3B3)
           font-size 38px
   .footer
-    height 3300px
     width 100%
     background #eee
     // background pink
     .foot
-      height 3300px
       width 100%
       // background green
       box-sizing border-box 
@@ -512,7 +513,6 @@ import footDatas from '../../data/footItem.json'
       display flex
       .footLeft
         width 50%
-        height 3300px
         // background #ee5
         .footLeftList
           .footLeftItem
@@ -568,7 +568,6 @@ import footDatas from '../../data/footItem.json'
               height 36px
       .footRight
         width 50%
-        height 3300px
         background #eee
         .footerBox
           .boxImg
@@ -620,4 +619,11 @@ import footDatas from '../../data/footItem.json'
           left 280px
           top 10px
           height 36px
+  .footText
+    background #eee
+    display block
+    font-size 30px
+    text-align center
+    height 60px
+    line-height 60px
 </style>
