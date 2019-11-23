@@ -177,7 +177,7 @@
           if (isPassWordLogin) {
             result = await loginPhone(phone, code)
             if (result.code === 0) {
-              console.log(result)
+              this.$router.push('/cyclopedia')
             }else {
               console.log('手机号或验证码不正确')
             }
