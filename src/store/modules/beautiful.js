@@ -1,38 +1,35 @@
 import Vue from 'vue'
-// import {
-//   getShopDatas
-// } from '../../api'
+import {
+  getBeautiful
+} from '../../api'
 
-// import {SAVE_SHOPDATAS} from '../mutation-type'
+import {SAVE_BEAUTIFUL} from '../mutation-type'
 
 const state = {
-  // shopDatas: {}, // 初始化商家信息数据
-  // cartShops: [], // 购物车的数据
+  userArr: [],
 }
 
 
 const actions = {
-  // async getShopDatasAction({commit}){
-  //   let result = await getShopDatas()
-  //   if(result.code === 0){
-  //     commit(SAVE_SHOPDATAS, {shopDatas: result.data})
-  //   }
-  // }
+  async getBeautifulAsync({commit}){
+    console.log('action')
+    let result = await getBeautiful()
+    console.log(result)
+    if(result.code === 0){
+      commit(SAVE_BEAUTIFUL, {userArr: result.data.responseData.list})
+    }
+  }
 }
 
 const mutations = {
-  // [SAVE_SHOPDATAS](state, {shopDatas}){
-  //   state.shopDatas = shopDatas
-  // }
-  
+  [SAVE_BEAUTIFUL](state, {userArr}){
+    state.userArr = userArr
+  }
 }
-
 
 const getters = {
   
 }
-
-
 
 export default {
   state,
