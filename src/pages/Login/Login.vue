@@ -19,7 +19,7 @@
             class="form-select"
             @click="changeSelect">
             <span ref="phoneWrap">+86</span>
-            <i class="iconfont icon-xiala xiala"></i>
+            <i class="iconfont icon-xiala xiala" :style="{transform: `rotate(${count}deg)`}"></i>
           </button>
           <div class="input-wrap">
             <input type="tel" class="form-input" placeholder="请输入手机号">
@@ -188,6 +188,7 @@
               font-size 40px
               position absolute
               top 4px
+              transition all .8s
           .input-wrap
             width 480px
             height 45px
