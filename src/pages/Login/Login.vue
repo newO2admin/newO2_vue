@@ -177,7 +177,9 @@
           if (isPassWordLogin) {
             result = await loginPhone(phone, code)
             if (result.code === 0) {
+              console.log(result)
               this.$router.push('/cyclopedia')
+              this.$store.dispatch('getUserAction', {user: result.data})
             }else {
               console.log('手机号或验证码不正确')
             }
@@ -187,8 +189,6 @@
         }else {
           console.log('前端验证失败')
         }
-
-        
       },
       async sendCode() {
         let result = await sendCode(this.phone)
