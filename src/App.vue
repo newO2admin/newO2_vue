@@ -5,7 +5,12 @@
 </template>
 
 <script type="text/ecmascript-6">
+  // import Login from './pages/Login/Login'
   export default {
+    name: 'App',
+    components: {
+      // Login,
+    }
   }
 </script>
 
