@@ -31,9 +31,9 @@
     <div class="blank"></div>
     <div class="wrapper">
       <ul class="product-list">
-        <li class="product-item">
+        <li class="product-item" v-for="item in 10" :key="item">
           <a href="javascript:" class="link-info">
-            <img class="hot_pic" src="https://img2.soyoung.com/post/20191113/7/dc60bd535b2dc189b165050a1500a084_400.png" alt="">
+            <img class="hot_pic" v-lazy="`https://img2.soyoung.com/post/20191113/7/dc60bd535b2dc189b165050a1500a084_400.png`" alt="">
             <div class="hot_text">
               <h3>【面部吸脂】【全脸吸脂升级版】瘦脸紧致提升三合一，逆向V脸提升，不戴头套0压迫，重塑上镜小脸</h3>
               <h4>巩敏 北京艺美医疗美容诊所</h4>
@@ -45,7 +45,7 @@
                 </span>
                 <u>￥</u>
                 <u>12800</u>
-                <img class="vip" src="https://img2.soyoung.com/upload/20180607/7/20180607153905810.png" alt="">
+                <img class="vip" src="../../assets/hk.jpg" alt="">
               </div>
             </div>
           </a>
@@ -65,108 +65,8 @@
             </div>
           </a>
         </li>
-        <li class="product-item">
-          <a href="javascript:" class="link-info">
-            <img class="hot_pic" src="https://img2.soyoung.com/post/20191113/7/dc60bd535b2dc189b165050a1500a084_400.png" alt="">
-            <div class="hot_text">
-              <h3>【面部吸脂】【全脸吸脂升级版】瘦脸紧致提升三合一，逆向V脸提升，不戴头套0压迫，重塑上镜小脸</h3>
-              <h4>巩敏 北京艺美医疗美容诊所</h4>
-              <h4>发起预约数: 15131</h4>
-              <div class="price">
-                <span>
-                  ¥
-                  <em>12800</em>
-                </span>
-                <u>￥</u>
-                <u>12800</u>
-                <img class="vip" src="https://img2.soyoung.com/upload/20180607/7/20180607153905810.png" alt="">
-              </div>
-            </div>
-          </a>
-          <span class="paihang">
-            <img src="//mstatic.soyoung.com/m/static/img/product/crown@x.png" alt="">
-            <span>北京市面部轮廓月销TOP3</span>
-          </span>
-          <a class="flag-link" href="javascript:">
-            <div class="flag-item">
-              <div class="flag-icon">
-                <span class="iconfont iconjuan"></span>
-                <span>尾款红包</span>
-              </div>
-              <div class="flag-text">
-                <span>付尾款，最高立减¥300</span>
-              </div>
-            </div>
-          </a>
-        </li>
-        <li class="product-item">
-          <a href="javascript:" class="link-info">
-            <img class="hot_pic" src="https://img2.soyoung.com/post/20191113/7/dc60bd535b2dc189b165050a1500a084_400.png" alt="">
-            <div class="hot_text">
-              <h3>【面部吸脂】【全脸吸脂升级版】瘦脸紧致提升三合一，逆向V脸提升，不戴头套0压迫，重塑上镜小脸</h3>
-              <h4>巩敏 北京艺美医疗美容诊所</h4>
-              <h4>发起预约数: 15131</h4>
-              <div class="price">
-                <span>
-                  ¥
-                  <em>12800</em>
-                </span>
-                <u>￥</u>
-                <u>12800</u>
-                <img class="vip" src="https://img2.soyoung.com/upload/20180607/7/20180607153905810.png" alt="">
-              </div>
-            </div>
-          </a>
-          <span class="paihang">
-            <img src="//mstatic.soyoung.com/m/static/img/product/crown@x.png" alt="">
-            <span>北京市面部轮廓月销TOP3</span>
-          </span>
-          <a class="flag-link" href="javascript:">
-            <div class="flag-item">
-              <div class="flag-icon">
-                <span class="iconfont iconjuan"></span>
-                <span>尾款红包</span>
-              </div>
-              <div class="flag-text">
-                <span>付尾款，最高立减¥300</span>
-              </div>
-            </div>
-          </a>
-        </li>
-        <li class="product-item">
-          <a href="javascript:" class="link-info">
-            <img class="hot_pic" src="https://img2.soyoung.com/post/20191113/7/dc60bd535b2dc189b165050a1500a084_400.png" alt="">
-            <div class="hot_text">
-              <h3>【面部吸脂】【全脸吸脂升级版】瘦脸紧致提升三合一，逆向V脸提升，不戴头套0压迫，重塑上镜小脸</h3>
-              <h4>巩敏 北京艺美医疗美容诊所</h4>
-              <h4>发起预约数: 15131</h4>
-              <div class="price">
-                <span>
-                  ¥
-                  <em>12800</em>
-                </span>
-                <u>￥</u>
-                <u>12800</u>
-                <img class="vip" src="https://img2.soyoung.com/upload/20180607/7/20180607153905810.png" alt="">
-              </div>
-            </div>
-          </a>
-          <span class="paihang">
-            <img src="//mstatic.soyoung.com/m/static/img/product/crown@x.png" alt="">
-            <span>北京市面部轮廓月销TOP3</span>
-          </span>
-          <a class="flag-link" href="javascript:">
-            <div class="flag-item">
-              <div class="flag-icon">
-                <span class="iconfont iconjuan"></span>
-                <span>尾款红包</span>
-              </div>
-              <div class="flag-text">
-                <span>付尾款，最高立减¥300</span>
-              </div>
-            </div>
-          </a>
-        </li>
+       
+        
       </ul>      
     </div>
 
@@ -191,6 +91,7 @@
     width 100%
     .lcategory_header
       position fixed
+      z-index 99
       width 100%
       height 90px
       background #fff
@@ -220,6 +121,7 @@
       height 163px
     .filter-group
       position fixed
+      z-index 99
       left 0
       top 90px
       box-sizing border-box
@@ -246,9 +148,9 @@
             border-right 1px solid #eeeeee
             border-left 1px solid #eeeeee
     .wrapper
+      height calc(100vh - 163px)
       .product-list
         width 100%
-        height calc(100vh - 163px)
         background #F3F7F7
         .product-item
           width 100%

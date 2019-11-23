@@ -31,17 +31,8 @@
           <!-- 轮播图 -->
           <div class="swiper-container">
             <ul class="swiper-wrapper">
-              <li class="swiper-slide">
-                <img src="https://img2.soyoung.com/post/20190925/7/22b5750d3d36a672c6551acccac4aa10_400.png?imageView2/0/format/webp" alt="">
-              </li>
-              <li class="swiper-slide">
-                <img src="https://img2.soyoung.com/post/20190910/1/f486a58ee5f25de04f81b538c0b2c5e9_400.png?imageView2/0/format/webp" alt="">
-              </li>
-              <li class="swiper-slide">
-                <img src="https://img2.soyoung.com/post/20190925/8/375da5729721fb20ae7b82aa72c0a8e4_400.png?imageView2/0/format/webp" alt="">
-              </li>
-              <li class="swiper-slide">
-                <img src="https://img2.soyoung.com/post/20190910/1/f486a58ee5f25de04f81b538c0b2c5e9_400.png?imageView2/0/format/webp" alt="">
+              <li class="swiper-slide" v-for="item in 5" :key="item">
+                <img v-lazy="`https://img2.soyoung.com/post/20190925/8/375da5729721fb20ae7b82aa72c0a8e4_400.png?imageView2/0/format/webp`" alt="">
               </li>
             </ul>
             <!-- 轮播导航图 -->
@@ -114,67 +105,21 @@
             </div>
             <div class="reval-list wrapper" ref="wrapper2">
               <div class="content">
-                <div class="item">
+                <div class="item" v-for="item in 5" :key="item">
                   <div class="eval-left">
                     <div class="one-head">
-                      <img src="https://img2.soyoung.com/user/1_100_100.png" alt="">
+                      <img v-lazy="`https://img2.soyoung.com/user/1_100_100.png`" alt="">
                       <span>氧气0y7iw</span>
                     </div>
-                    <div class="two-head"><img src="https://static.soyoung.com/sy-pre/consum-img-1565068204832.png" alt=""></div>
+                    <div class="two-head"><img v-lazy="`https://static.soyoung.com/sy-pre/consum-img-1565068204832.png`" alt=""></div>
                     <p class="star-rank">环境:5.0 专业度:5.0</p>
                     <div class="eval-content">
                       相信很多人跟我一样，特别想知道伊婉玻尿酸能保持多久？其实，跟每个人的体质是有一定关系的。如果一个人新陈代谢较快，那么注射伊婉玻尿酸后，玻尿酸会随着新陈代谢的原因被逐渐吸收。
                       相反，如果新陈代谢较慢，注射伊婉玻尿酸后，注射材料流失慢，自然维持的时间也比较长。一般来说，爱运动的人、肠胃功能活跃的人比不爱运动的人、肠胃蠕动慢的人维持时间要短。
                     </div>
                   </div>
-                  <img src="https://img2.soyoung.com/tieba/android/shortpost/20190514/3/0d3320e68ccac32d61dfe6f01d6b7c6f_152_152.jpg" class="eval-img" alt=""></img>
+                  <img v-lazy="`https://img2.soyoung.com/tieba/android/shortpost/20190514/3/0d3320e68ccac32d61dfe6f01d6b7c6f_152_152.jpg`" class="eval-img" alt=""></img>
                 </div>
-                <div class="item">
-                  <div class="eval-left">
-                    <div class="one-head">
-                      <img src="https://img2.soyoung.com/user/1_100_100.png" alt="">
-                      <span>氧气0y7iw</span>
-                    </div>
-                    <div class="two-head"><img src="https://static.soyoung.com/sy-pre/consum-img-1565068204832.png" alt=""></div>
-                    <p class="star-rank">环境:5.0 专业度:5.0</p>
-                    <div class="eval-content">
-                      相信很多人跟我一样，特别想知道伊婉玻尿酸能保持多久？其实，跟每个人的体质是有一定关系的。如果一个人新陈代谢较快，那么注射伊婉玻尿酸后，玻尿酸会随着新陈代谢的原因被逐渐吸收。
-                      相反，如果新陈代谢较慢，注射伊婉玻尿酸后，注射材料流失慢，自然维持的时间也比较长。一般来说，爱运动的人、肠胃功能活跃的人比不爱运动的人、肠胃蠕动慢的人维持时间要短。
-                    </div>
-                  </div>
-                  <img src="https://img2.soyoung.com/tieba/android/shortpost/20190514/3/0d3320e68ccac32d61dfe6f01d6b7c6f_152_152.jpg" class="eval-img" alt=""></img>
-                </div>
-                <div class="item">
-                  <div class="eval-left">
-                    <div class="one-head">
-                      <img src="https://img2.soyoung.com/user/1_100_100.png" alt="">
-                      <span>氧气0y7iw</span>
-                    </div>
-                    <div class="two-head"><img src="https://static.soyoung.com/sy-pre/consum-img-1565068204832.png" alt=""></div>
-                    <p class="star-rank">环境:5.0 专业度:5.0</p>
-                    <div class="eval-content">
-                      相信很多人跟我一样，特别想知道伊婉玻尿酸能保持多久？其实，跟每个人的体质是有一定关系的。如果一个人新陈代谢较快，那么注射伊婉玻尿酸后，玻尿酸会随着新陈代谢的原因被逐渐吸收。
-                      相反，如果新陈代谢较慢，注射伊婉玻尿酸后，注射材料流失慢，自然维持的时间也比较长。一般来说，爱运动的人、肠胃功能活跃的人比不爱运动的人、肠胃蠕动慢的人维持时间要短。
-                    </div>
-                  </div>
-                  <img src="https://img2.soyoung.com/tieba/android/shortpost/20190514/3/0d3320e68ccac32d61dfe6f01d6b7c6f_152_152.jpg" class="eval-img" alt=""></img>
-                </div>
-                <div class="item">
-                  <div class="eval-left">
-                    <div class="one-head">
-                      <img src="https://img2.soyoung.com/user/1_100_100.png" alt="">
-                      <span>氧气0y7iw</span>
-                    </div>
-                    <div class="two-head"><img src="https://static.soyoung.com/sy-pre/consum-img-1565068204832.png" alt=""></div>
-                    <p class="star-rank">环境:5.0 专业度:5.0</p>
-                    <div class="eval-content">
-                      相信很多人跟我一样，特别想知道伊婉玻尿酸能保持多久？其实，跟每个人的体质是有一定关系的。如果一个人新陈代谢较快，那么注射伊婉玻尿酸后，玻尿酸会随着新陈代谢的原因被逐渐吸收。
-                      相反，如果新陈代谢较慢，注射伊婉玻尿酸后，注射材料流失慢，自然维持的时间也比较长。一般来说，爱运动的人、肠胃功能活跃的人比不爱运动的人、肠胃蠕动慢的人维持时间要短。
-                    </div>
-                  </div>
-                  <img src="https://img2.soyoung.com/tieba/android/shortpost/20190514/3/0d3320e68ccac32d61dfe6f01d6b7c6f_152_152.jpg" class="eval-img" alt=""></img>
-                </div>
-
               </div>
               
             </div>
@@ -206,15 +151,15 @@
             </div>
             <div class="main_jour">
               <div class="jour_icon">
-                <img src="https://img2.soyoung.com/user/20180724/2/cb84c3cd924511b30a861194b6e21b9d_100_100.png" alt="">
+                <img v-lazy="`https://img2.soyoung.com/user/20180724/2/cb84c3cd924511b30a861194b6e21b9d_100_100.png`" alt="">
                 <div class="info">
                   <p>氧气YWY</p>
                   <p>2月15日</p>
                 </div>
               </div>
               <div class="jour_pic">
-                <img src="https://img2.soyoung.com/tieba/ios/20190412/9/6ca820ad2be0a2f490624a0a7445aa66_301_301.jpg" alt="">
-                <img src="https://img2.soyoung.com/face/tieba/web/20190215/2/b3b227cc37dda8733d04ef32a20404c1_301_301.jpg" alt="">
+                <img v-lazy="`https://img2.soyoung.com/tieba/ios/20190412/9/6ca820ad2be0a2f490624a0a7445aa66_301_301.jpg`" alt="">
+                <img v-lazy="`https://img2.soyoung.com/face/tieba/web/20190215/2/b3b227cc37dda8733d04ef32a20404c1_301_301.jpg`" alt="">
               </div>
               <div class="jour_text ">
                       今天已经是第125天了，垫了鼻基底以后法令纹就没有以前那么深了，而且显的鼻子也立体些了，今年回北京发现皮肤好了很多，没有年前那么干了，可能是水光针起到作用了，贴面膜的时候精华也能很好的吸收，这周末他们医院
@@ -258,8 +203,8 @@
               <p>1、此项目为韩国进口伊婉C玻尿酸1ml，可现场验药，所拍项目需一次性使用完毕，不包含丰唇，卧蚕、泪沟。</p>
               <p>2、本院为轮诊制，如您指定主任注射需加收注射费500元，指定院长注射需加收注射费1000元。</p>
               <p>
-                <img src="https://img2.soyoung.com/tieba/web/20191108/9/e51ab7d54c8f0390b5915aea1fa06bce_570.jpg" alt="">
-                <img src="https://img2.soyoung.com/tieba/web/20191120/5/b3d78f9ff2f45a07916005e057b226cf_570.jpg" alt="">
+                <img v-lazy="`https://img2.soyoung.com/tieba/web/20191108/9/e51ab7d54c8f0390b5915aea1fa06bce_570.jpg`" alt="">
+                <img v-lazy="`https://img2.soyoung.com/tieba/web/20191120/5/b3d78f9ff2f45a07916005e057b226cf_570.jpg`" alt="">
               </p>
             </div>
             
@@ -640,6 +585,12 @@
           margin-top 30px  
           padding 0 30px 30px  
           width 100%
+          img 
+            width 690px
+            height 5058px
+          $:lastchild
+            width 690px
+            height 1380px
       .tuijian1
         margin-top 30px
         h2
