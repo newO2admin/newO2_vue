@@ -4,12 +4,17 @@ import Material from '../pages/Material/Material'
 import Tool from '../pages/Tool/Tool'
 import Zhuye from '../pages/Zhuye/Zhuye'
 import Login from '../pages/Login/Login'
+import Beautiful from '../pages/beautiful/beautiful.vue'
 
 //放置路由
 export default [
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/beautiful',
+    component: Beautiful
   },
   {
     path: '/cyclopedia',
@@ -37,8 +42,8 @@ export default [
       }
     ]
   },
-  {
+  {  
     path: '/',
-    redirect: '/login'
+    redirect: '/cyclopedia'
   }
 ]
