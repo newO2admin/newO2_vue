@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import 'lib-flexible/flexible'
+import VueLazyLoad from 'vue-lazyload'
+import loading from './assets/images/loading.gif'
+Vue.use(VueLazyLoad, {
+  loading
+})
 
 import router from './router'
 

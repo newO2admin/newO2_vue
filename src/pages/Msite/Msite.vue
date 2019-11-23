@@ -209,11 +209,11 @@
           <ul class="footLeftList">
             <li class="footLeftItem" v-for="(footItem, index) in rFootDatas" :key="index">
               <div class="footerBox">
-                <img class="boxImg" :src="footItem.bigImg" alt="">
+                <img class="boxImg" v-lazy="footItem.bigImg" alt="">
                 <p class="boxTitle">{{footItem.bigTitle}}</p>
               </div>
               <div class="footIcon">
-                <img class="icon1" :src="footItem.sameImg" alt="">
+                <img class="icon1" v-lazy="footItem.sameImg" alt="">
                 <i class="userName">{{footItem.smallTitle}}</i>
               </div>
               <div class="footLike">
@@ -227,11 +227,11 @@
           <ul class="footRightList">
             <li class="footRightItem" v-for="(footItem, index) in lFootDatas" :key="index">
               <div class="footerBox">
-                <img class="boxImg" :src="footItem.bigImg" alt="">
+                <img class="boxImg" v-lazy="footItem.bigImg" alt="">
                 <p class="boxTitle">{{footItem.bigTitle}}</p>
               </div>
               <div class="footIcon">
-                <img class="icon1" :src="footItem.sameImg" alt="">
+                <img class="icon1" v-lazy="footItem.sameImg" alt="">
                 <i class="userName">{{footItem.smallTitle}}</i>
               </div>
               <div class="footLike">
