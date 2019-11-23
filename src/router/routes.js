@@ -64,6 +64,10 @@ export default [
   },
   {
     path: '/',
+<<<<<<< HEAD
     redirect: '/cyclopedia'
+=======
+    redirect: '/lcategory'
+>>>>>>> lp
   }
 ] 
