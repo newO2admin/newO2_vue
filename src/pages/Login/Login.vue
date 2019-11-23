@@ -22,7 +22,17 @@
             <i class="iconfont icon-xiala xiala" :style="{transform: `rotate(${count}deg)`}"></i>
           </button>
           <div class="input-wrap">
-            <input type="tel" class="form-input" placeholder="请输入手机号">
+            <input 
+              type="tel"
+              maxlength="11"
+              placeholder="请输入手机号"
+              name="phone"
+              v-validate="'required|phone'"
+              v-model="phone"
+              class="form-input"
+              autocomplete="off"
+            >
+            <span style="color: red;" v-show="errors.has('phone')">{{errors.first('phone')}}</span>
           </div>
           <div class="bsWrapper"  :class="{active:isShowSelect}">
             <ul class="phoneSelect">
@@ -59,21 +69,53 @@
         </div>
         <div class="form-group">
           <div class="msg-wrap">
-            <input type="number" maxlength="6" placeholder="请输入验证码" class="form-input">
+          <input 
+            type="number" 
+            maxlength="6" 
+            placeholder="请输入验证码"
+            name="code1"
+            v-validate="'required|code1'"
+            v-model="code"
+            class="form-input"
+          >
+          <span style="color: red;" v-show="errors.has('code1')">{{errors.first('code1')}}</span>
           </div>
-          <button type="button" class="msg-btn">获取验证码</button>
+          <button 
+            type="button" class="msg-btn" @click.prevent="sendCode"
+            :disabled="!isRightPhoneNumber || !! countDown"
+          >{{countDown ? `${countDown}s` : '获取验证码'}}</button>
         </div>
         <p class="tip">未注册的手机将自动创建为新氧用户</p>
-        <button type="button" class="form-submit" disabled>登录</button>
+        <button class="form-submit" @click.prevent="login">登录</button>
       </form>
       <form class="login-account" :class="{on:isPassWordLogin}" action="">
         <div class="form-group">
-          <input type="text" class="form-input" placeholder="账号（手机/邮箱）">
+          <div class="form-inputThree">
+            <input 
+              type="text" 
+              placeholder="账号（手机/邮箱）"
+              name="phoneOrEmail"
+              v-validate="'required|phoneOrEmail'"
+              v-model="phoneOrEmail"
+              class="form-input" 
+            >
+            <span style="color: red;" v-show="errors.has('phoneOrEmail')">{{errors.first('phoneOrEmail')}}</span>
+          </div>
         </div>
         <div class="form-group">
-          <input type="text" class="form-input" placeholder="请输入密码">
+          <div class="form-inputThree">
+            <input 
+            type="text" 
+            placeholder="请输入密码"
+            name="pwd"
+            v-validate="'required|pwd'"
+            v-model="pwd"
+            class="form-input" 
+            >
+            <span style="color: red;" v-show="errors.has('pwd')">{{errors.first('pwd')}}</span>
+          </div>
         </div>
-        <button type="button" class="form-submit" disabled>登录</button>
+        <button type="button" class="form-submit" @click.prevent="login">登录</button>
         <p class="js-btn">找回密码</p>
       </form>
     </main>
@@ -96,13 +138,19 @@
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import {sendCode, loginPhone, loginPhoneOrEmail} from '../../api'
   export default {
     data() {
       return {
-        isPassWordLogin: true,
-        isShowSelect: false,
-        isShowPhoneColor: false,
-        count: 0
+        isPassWordLogin: true, //判断是否手机号or密码登录
+        isShowSelect: false, //判断是否显示下拉框
+        isShowPhoneColor: false, //判断是否显示选中手机号的颜色
+        count: 0,
+        phone: '',
+        code: '',
+        phoneOrEmail: '',
+        pwd: '',
+        countDown: 0
       }
     },
     mounted() {
@@ -112,17 +160,72 @@
         scrollX: false,
         bounce: false
       })
+      console.log(this.$validator)
     },
     methods: {
       changeSelect() {
         this.isShowSelect = !this.isShowSelect
         this.count += 180
       },
+      async login() {
+        let {isPassWordLogin, phone, pwd, phoneOrEmail, code} = this
+        let names = isPassWordLogin ? ['phone', 'code'] : ['phoneOrEmail', 'pwd']
+        const success = await this.$validator.validateAll(names)
+        if (success) {
+          console.log('前端验证成功')
+          let result
+          if (isPassWordLogin) {
+            result = await loginPhone(phone, code)
+            if (result.code === 0) {
+              console.log(result)
+            }else {
+              console.log('手机号或验证码不正确')
+            }
+          }else {
+            result = await loginPhoneOrEmail(phoneOrEmail, pwd)
+        }
+        }else {
+          console.log('前端验证失败')
+        }
+
+        
+      },
+      async sendCode() {
+        let result = await sendCode(this.phone)
+        if (result.code === 0) {
+           console.log('短信发送成功')
+        }else {
+          console.log('短信发送失败')
+        }
+        if (this.intervalId) return
+        this.countDown = 10
+        this.intervalId = setInterval(() => {
+          this.countDown--
+          console.log(this.countDown)
+          this.countDown === 0 && clearInterval(this.intervalId)
+        }, 1000);
+      }
     },
+    computed: {
+      isRightPhoneNumber() {
+        return /^1(3|4|5|6|7|8|9)\d{9}$/.test(this.phone)
+      }
+    }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  loginBtn()
+    width 624px
+    height 80px
+    color #9F9F9F
+    font-size 32px
+    background-color rgba(255,255,255,.6)
+    margin-top 100px
+    padding 2px 12px
+    border 0
+    outline: none
+
   #g-Login
     height 1334px
     background-color pink
@@ -231,12 +334,9 @@
                 font-size 28px
                 &.active
                   color #00b6b3
-            
           .msg-wrap
             width 400px
-            height 90px
-            display flex
-            align-items center
+            height 45px
             .form-input
               width 100%
               height 50px
@@ -250,27 +350,22 @@
               outline none
             ::-webkit-input-placeholder
                 color #ffffff
-          .msg-btn
-            width 172px
-            height 48px
-            font-size 28px
-            color #ffffff
-            background-color transparent
-            border 1px solid #ffffff
+        .msg-btn
+          width 172px
+          height 48px
+          font-size 28px
+          color #ffffff
+          background-color transparent
+          border 1px solid #ffffff
+          outline none
         .tip
           height 28px
           font-size 24px
           margin-top 16px
           color rgba(255,255,255,.6)
         .form-submit
-          width 624px
-          height 80px
-          color #9F9F9F
-          font-size 32px
-          background-color rgba(255,255,255,.6)
-          margin-top 100px
-          padding 2px 12px
-          border 0
+          loginBtn()
+
       .login-account
         &.on
           display none
@@ -284,26 +379,21 @@
           display flex
           align-items center
           position relative
-          .form-input
-            width 604px
-            height 50px
-            box-sizing border-box
-            border none 
-            outline none
-            padding 0 20px
-            color #ffffff
-            background-color transparent
-          ::-webkit-input-placeholder
-            color #ffffff
+          .form-inputThree
+            height 45px
+            .form-input
+              width 604px
+              height 50px
+              box-sizing border-box
+              border none 
+              outline none
+              padding 0 20px
+              color #ffffff
+              background-color transparent
+            ::-webkit-input-placeholder
+              color #ffffff
         .form-submit
-          width 624px
-          height 80px
-          color #9F9F9F
-          font-size 32px
-          background-color rgba(255,255,255,.6)
-          margin-top 130px
-          padding 2px 12px
-          border 0
+          loginBtn()
         .js-btn
           color #ffffff
           float right
