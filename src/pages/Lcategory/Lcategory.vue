@@ -1,87 +1,208 @@
 <template>
-  <div id="lcategory">
-    <div class="lcategory_header">
-      <span class="header_title">
-        <span class="header_title_text ">面部轮廓</span>
-      </span> 
-      <span class="lcategory_back" @click="$router.back()"> < </span> 
-    </div>
-    <div class="filter-group">
-      <div class="inner">
-        <a href="javascript:">
-          <div>
-            <span>北京市</span>
-            <span>∨</span>
+  <div>
+      <div id="lcategory">
+        <div class="lcategory_header">
+          <span class="header_title">
+            <span class="header_title_text ">面部轮廓</span>
+          </span> 
+          <span class="lcategory_back" @click="$router.back()"> < </span> 
+        </div>
+        <div class="filter-group">
+          <div class="inner">
+            <a href="javascript:" :class="{active:cityLight}" @click="cityLightClick">
+              <div>
+                <span>北京市</span>
+                <span class="iconfont icon-arrow-down"></span>
+              </div>
+            </a>      
+            <a href="javascript:" :class="{active:meirongLight}"  @click="meirongLightClick">
+              <div class="henxian">
+                <span>{{name}}</span>
+                <span class="iconfont icon-arrow-down"></span>
+              </div>
+            </a>       
+            <a href="javascript:" :class="{active:paixuLight}"  @click="paixuLightClick">
+              <div>
+                <span>智能排序</span>
+                <span class="iconfont icon-arrow-down"></span>
+              </div>
+            </a>
           </div>
-        </a>      
-        <a href="javascript:">
-          <div class="henxian">
-            <span>面部轮廓</span>
-            <span>∨</span>
-          </div>
-        </a>       
-        <a href="javascript:">
-          <div>
-            <span>智能排序</span>
-            <span>∨</span>
-          </div>
-        </a>
+        </div>
+        <div class="blank"></div>
+        <div class="wrapper">
+          <ul class="product-list">
+            <li class="product-item" v-for="item in 10" :key="item">
+              <a href="javascript:" class="link-info">
+                <img class="hot_pic" v-lazy="`https://img2.soyoung.com/post/20191113/7/dc60bd535b2dc189b165050a1500a084_400.png`" alt="">
+                <div class="hot_text">
+                  <h3>【面部吸脂】【全脸吸脂升级版】瘦脸紧致提升三合一，逆向V脸提升，不戴头套0压迫，重塑上镜小脸</h3>
+                  <h4>巩敏 北京艺美医疗美容诊所</h4>
+                  <h4>发起预约数: 15131</h4>
+                  <div class="price">
+                    <span>
+                      ¥
+                      <em>12800</em>
+                    </span>
+                    <u>￥</u>
+                    <u>12800</u>
+                    <img class="vip" src="../../assets/hk.jpg" alt="">
+                  </div>
+                </div>
+              </a>
+              <span class="paihang">
+                <img src="//mstatic.soyoung.com/m/static/img/product/crown@x.png" alt="">
+                <span>北京市面部轮廓月销TOP3</span>
+              </span>
+              <a class="flag-link" href="javascript:">
+                <div class="flag-item">
+                  <div class="flag-icon">
+                    <span class="iconfont iconjuan"></span>
+                    <span>尾款红包</span>
+                  </div>
+                  <div class="flag-text">
+                    <span>付尾款，最高立减¥300</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          
+            
+          </ul>      
+        </div>
       </div>
-    </div>
-    <div class="blank"></div>
-    <div class="wrapper">
-      <ul class="product-list">
-        <li class="product-item" v-for="item in 10" :key="item">
-          <a href="javascript:" class="link-info">
-            <img class="hot_pic" v-lazy="`https://img2.soyoung.com/post/20191113/7/dc60bd535b2dc189b165050a1500a084_400.png`" alt="">
-            <div class="hot_text">
-              <h3>【面部吸脂】【全脸吸脂升级版】瘦脸紧致提升三合一，逆向V脸提升，不戴头套0压迫，重塑上镜小脸</h3>
-              <h4>巩敏 北京艺美医疗美容诊所</h4>
-              <h4>发起预约数: 15131</h4>
-              <div class="price">
-                <span>
-                  ¥
-                  <em>12800</em>
-                </span>
-                <u>￥</u>
-                <u>12800</u>
-                <img class="vip" src="../../assets/hk.jpg" alt="">
-              </div>
-            </div>
-          </a>
-          <span class="paihang">
-            <img src="//mstatic.soyoung.com/m/static/img/product/crown@x.png" alt="">
-            <span>北京市面部轮廓月销TOP3</span>
-          </span>
-          <a class="flag-link" href="javascript:">
-            <div class="flag-item">
-              <div class="flag-icon">
-                <span class="iconfont iconjuan"></span>
-                <span>尾款红包</span>
-              </div>
-              <div class="flag-text">
-                <span>付尾款，最高立减¥300</span>
-              </div>
-            </div>
-          </a>
-        </li>
-       
-        
-      </ul>      
-    </div>
-
+      <!-- 遮罩 -->
+      <div class="mask" v-show="cityLight || meirongLight || paixuLight">
+        <div class="wrapper" ref="wrapper1">
+          <ul class="yiji content" v-show="meirongLight">
+            <li  v-for="(item, index) in menu1_info" @click="dianji1(index)" :class="{active:yijiIndex==index}" :key="index">{{item.name}}</li>
+          </ul>
+        </div>
+        <div class="wrapper" ref="wrapper2">
+          <ul class="yiji content" v-show="yijiIndex && this.meirongLight">
+            <li  v-for="(item, index) in son" @click="dianji2(index)" :class="{active:yijiIndex2==index}" :key="index">{{item.name}}</li>
+          </ul>
+        </div>
+        <div class="wrapper" ref="wrapper4">
+          <ul class="yiji content" v-show="yijiIndex2 && yijiIndex && this.meirongLight">
+            <li  v-for="(item, index) in son_son" @click="dianji3(index)" :class="{active:yijiIndex3==index}" :key="index">{{item.name}}</li>
+          </ul>
+        </div>
+      </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import { responseData } from '../../../datas/111.json'
   import BScroll from 'better-scroll'
   export default {
+    data(){
+      return {
+        cityLight: false,
+        meirongLight: false,
+        paixuLight: false,
+        menu1_info: [],
+        yijiIndex: 0,
+        yijiIndex2: 0,
+        yijiIndex3: 0,
+        son:[],
+        son_son: [],
+        name:'面部轮廓'
+
+      }
+    },
+    methods:{
+      cityLightClick(){
+        this.cityLight = !this.cityLight,
+        this.meirongLight = false,
+        this.paixuLight = false
+      },
+      meirongLightClick(){
+        this.cityLight = false,
+        this.meirongLight = !this.meirongLight,
+        this.paixuLight = false
+        if (!this.meirongLight) {
+          this.yijiIndex = 0 
+          this.yijiIndex2 = 0
+          this.yijiIndex3 = 0
+        }
+      },
+      paixuLightClick(){
+        this.cityLight = false,
+        this.meirongLight = false,
+        this.paixuLight = !this.paixuLight
+      },
+      dianji1(index){
+        this.yijiIndex2 = 0
+        this.yijiIndex = index
+        let xyz = this.menu1_info[index]
+        this.son = xyz.son
+        //console.log(this.son)
+      },
+      dianji2(index){
+        this.yijiIndex3 = 0
+        this.yijiIndex2 = index
+        let xyz = this.son[index]
+        this.son_son = xyz.son
+        //console.log(this.son_son)
+
+      },
+
+      dianji3(index){
+        this.yijiIndex3 = index
+        let xyz = this.son_son[index]
+        if (!xyz.son) {
+          this.name = xyz.name
+
+          this.yijiIndex = 0 
+          this.yijiIndex2 = 0
+          this.yijiIndex3 = 0
+
+          this.cityLight = false
+          this.meirongLight = false
+          this.paixuLight = false
+        }
+      }
+
+    },
     mounted(){
-      new BScroll('.wrapper', {
-          scrollY: true, // 设置纵向滑动
-          // click: true,  //设置是否可以点击
+        this.scroll3 = new BScroll('.wrapper', {
+            scrollY: true, // 设置纵向滑动
+            // click: true,  //设置是否可以点击
+          })
+        // console.log('xxx')
+        // console.log(responseData.menu1_info)
+        this.menu1_info = responseData.menu1_info
+        this.scroll1 = new BScroll(this.$refs.wrapper1, {
+          scrollX: false,
+          scrollY: true,
+          bounce: {
+            top: false,
+            bottom: false,
+          },
+          click: true,
         })
-        console.log('xxx')
+
+        this.scroll2 = new BScroll(this.$refs.wrapper2, {
+          scrollX: false,
+          scrollY: true,
+          bounce: {
+            top: false,
+            bottom: false,
+          },
+          click: true,
+        })
+
+        this.scroll4 = new BScroll(this.$refs.wrapper4, {
+          scrollX: false,
+          scrollY: true,
+          bounce: {
+            top: false,
+            bottom: false,
+          },
+          click: true,
+        })
+      
     }
   }
 </script>
@@ -143,6 +264,8 @@
           line-height 42px
           text-align center
           font-size 28px 
+          &.active
+            color #69D7CC
           .henxian
             box-sizing border-box
             border-right 1px solid #eeeeee
@@ -250,6 +373,32 @@
               .flag-text
                 padding-left 20px
                 border-left 1px solid #eee
-
+  .mask
+    //display none
+    z-index 99
+    position fixed
+    top 162px
+    bottom 0px
+    left 0px
+    right 0px
+    background #fff
+    display flex
+    .wrapper
+      height 1160px
+      overflow hidden
+      .yiji
+        float left
+        li
+          box-sizing border-box
+          width 230px
+          height 80px
+          line-height 80px
+          padding 0 16px
+          border-bottom 1px solid #eee
+          background #eee
+          &.active
+            border-left 5px solid #69D7CC
+            background #fff
+            color #69D7CC
 
 </style>
