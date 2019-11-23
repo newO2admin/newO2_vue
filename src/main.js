@@ -3,6 +3,7 @@ import App from './App.vue'
 import 'lib-flexible/flexible'
 
 import router from './router'
+import store from './store'
 // import './veevalidate'
 
 Vue.config.productionTip = false
@@ -13,6 +14,7 @@ new Vue ({
   template: '<App />',
   //安装路由
   router,
+  store
 })
 // new Vue({
 //   render: h => h(App),
