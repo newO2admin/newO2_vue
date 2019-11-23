@@ -1,5 +1,8 @@
 <template>
   <div id="shareContainer">
+    12
+    <img :src="user.avatar.u" alt="">
+12
     <div class="user_name">
       <img :src="user.avatar.u" alt="">
       <div class="info">
@@ -44,6 +47,7 @@
         <span class="right">icon图标 {{user.end.favor_cnt}}</span>
       </div>
     </div>
+   
   </div>
 </template>
 

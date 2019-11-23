@@ -8,11 +8,11 @@
     <!-- 导航 -->
     <div class="nav_panesl">
       <div class="nav">
-        <div class="drop-down action">最热日记</div>
-        <div class="drop-down">全部项目</div>
+        <div class="drop-down">最热日记</div>
+        <div class="drop-down" @click="openlist2()" :class="{action:isShowList}">全部项目</div>
         <div class="drop-down">最全部地区</div>
       </div>
-      <list/>
+      <list :item="item" v-show="isShowList" :isShowList="isShowList"/>
     </div>
     <div class="main-body wrapper">
       <div class="content" > 
@@ -29,6 +29,7 @@ import BScroll from 'better-scroll'
 // import PullUp from '@better-scroll/pull-up'
 
 import user from '../../../static/user.json'
+import projectInfo from '../../../static/3.json'
 import BeautifulShare from '../../components/beautifulShare/beautifulShare'
 import List from '../../components/list/list'
   export default {
@@ -38,7 +39,9 @@ import List from '../../components/list/list'
     },
     data(){
       return {
-        userArr: []
+        userArr: [],
+        item:[],
+        isShowList: false
       }
     },
     mounted(){
@@ -46,8 +49,14 @@ import List from '../../components/list/list'
         // pullUpLoad: true
         scrollY: true
       })
-      
+      this.item = projectInfo.responseData.item
       this.userArr = user.responseData.list
+    },
+    methods:{
+      openlist2(){
+        this.isShowList = !this.isShowList
+        // console.log(this.isShowList)
+      }
     }
   }
 </script>
