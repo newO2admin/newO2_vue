@@ -198,167 +198,44 @@
     <div class="feed-tab">
       <div class="tab">
         <ul class="tabList">
-          <li class="tabItem active"><span>推荐</span></li>
-          <li class="tabItem"><span>鼻部</span></li>
-          <li class="tabItem"><span>眼部</span></li>
-          <li class="tabItem"><span>面部轮廓</span></li>
-          <li class="tabItem"><span>齿科</span></li>
-          <li class="tabItem"><span>面部轮廓</span></li>
-          <li class="tabItem"><span>胸部</span></li>
-          <li class="tabItem"><span>臀部</span></li>
-          <li class="tabItem"><span>玻尿酸</span></li>
-          <li class="tabItem"><span>美体塑形</span></li>
-          <li class="tabItem"><span>肉霉素</span></li>
+          <li class="tabItem" 
+          :class="{active:show===index}" 
+          v-for="(footItem, index) in datas" :key="index" 
+          @click="toShow(index)"
+          
+          ><span>{{footItem}}</span></li>
         </ul>
       </div>
     </div>
     <!-- 底部内容 -->
-    <div class="footer">
-      <div class="foot">
-        <div class="footLeft">
-          <ul class="footLeftList">
-            <li class="footLeftItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/tieba/android/post/20191119/9/8c35f2e4fb9c570e69349f23e94a83c3_540_540.jpg?imageView2/0/format/webp" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footLeftItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/tieba/android/post/20191119/9/8c35f2e4fb9c570e69349f23e94a83c3_540_540.jpg?imageView2/0/format/webp" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footLeftItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/tieba/android/post/20191119/9/8c35f2e4fb9c570e69349f23e94a83c3_540_540.jpg?imageView2/0/format/webp" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon clearFix">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike clearFix">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footLeftItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/tieba/android/post/20191119/9/8c35f2e4fb9c570e69349f23e94a83c3_540_540.jpg?imageView2/0/format/webp" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="footRight">
-          <ul class="footRightList">
-            <li class="footRightItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/face/tieba/web/20190702/2/4544dab96170fee5f38c670c7be031a5_344_344.jpg?v=1" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footRightItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/face/tieba/web/20190702/2/4544dab96170fee5f38c670c7be031a5_344_344.jpg?v=1" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footRightItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/face/tieba/web/20190702/2/4544dab96170fee5f38c670c7be031a5_344_344.jpg?v=1" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footRightItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/face/tieba/web/20190702/2/4544dab96170fee5f38c670c7be031a5_344_344.jpg?v=1" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-            <li class="footRightItem">
-              <div class="footerBox">
-                <img class="boxImg" src="https://img2.soyoung.com/face/tieba/web/20190702/2/4544dab96170fee5f38c670c7be031a5_344_344.jpg?v=1" alt="">
-                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" src="https://img2.soyoung.com/doctor/20190726/6/10460fcad381f384517123cad398eacd_64_64.png?imageView2/0/format/webp" alt="">
-                <i class="userName">昆明市延安医院杰西艾美容医院</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>10</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <Footer :rFootDatas='rFootDatas' :lFootDatas="lFootDatas" />
+    <div class="footText">没有更多....</div>
   </div>
 </template>
 <script type="text/ecmascript-6">
 import Swiper from 'swiper'
 import BScroll from 'better-scroll'
 import 'swiper/css/swiper.min.css'
+
+import Footer from '../../components/Footer/Footer'
+import datas from '../../data/foot.json'
+import footDatas from '../../data/footItem.json'
   export default {
+    components:{
+      Footer
+    },
+    data(){
+      return {
+        show: 0,
+        datas:[],
+        lFootDatas:[],
+        rFootDatas:[]
+      }
+    },
     mounted(){
+      this.datas = datas
+      this.lFootDatas = footDatas[0]
+      this.rFootDatas = footDatas[1]
       new BScroll('.wrapper', {
         scrollX: true,
       })
@@ -423,6 +300,9 @@ import 'swiper/css/swiper.min.css'
         color grey
   .login-icon
     margin-left 30px
+    position absolute
+    right 60px
+    top 20px
     width 60px
     height 60px
   .msite_nav
@@ -571,126 +451,12 @@ import 'swiper/css/swiper.min.css'
           z-index 3
           bottom-border-1px(#0FD3B3)
           font-size 38px
-  .footer
-    height 3300px
-    width 100%
+  
+  .footText
     background #eee
-    // background pink
-    .foot
-      height 3300px
-      width 100%
-      // background green
-      box-sizing border-box 
-      padding 0 30px
-      display flex
-      .footLeft
-        width 50%
-        height 3300px
-        // background #ee5
-        .footLeftList
-          .footLeftItem
-            .footerBox
-              .boxImg
-                border-radius 40px
-              .boxTitle
-                background #fff
-                display block
-                white-space  nowrap
-                overflow hidden
-                text-overflow  ellipsis
-                padding 20px
-            .footIcon
-              background #fff
-              width 50px
-              height  50px
-              border-radius 50%
-              position absolute
-              .icon1
-                z-index 3
-                display block
-                width 40px
-                height 40px
-                border-radius 50%
-                position absolute
-                left 10px
-                top 10px
-              .userName
-                z-index 3
-                display block
-                white-space  nowrap
-                overflow hidden
-                text-overflow  ellipsis
-                position absolute
-                left 60px
-                top 10px
-                width 140px
-                height 36px
-          .footLike
-            background #fff
-            position relative
-            height 50px
-            i 
-              position absolute
-              left 250px
-              top 10px
-              height 36px
-            span
-              position absolute
-              left 280px
-              top 10px
-              height 36px
-      .footRight
-        width 50%
-        height 3300px
-        background #eee
-        .footerBox
-          .boxImg
-            border-radius 40px
-          .boxTitle
-            background #fff
-            display block
-            white-space  nowrap
-            overflow hidden
-            text-overflow  ellipsis
-            padding 20px
-        .footIcon
-          background #fff
-          width 50px
-          height  50px
-          border-radius 50%
-          position absolute
-          .icon1
-            z-index 3
-            display block
-            width 40px
-            height 40px
-            border-radius 50%
-            position absolute
-            left 10px
-            top 10px
-          .userName
-            z-index 3
-            display block
-            white-space  nowrap
-            overflow hidden
-            text-overflow  ellipsis
-            position absolute
-            left 60px
-            top 10px
-            width 140px
-            height 36px
-      .footLike
-        background #fff
-        position relative
-        height 50px
-        i 
-          position absolute
-          left 250px
-          top 10px
-          height 36px
-        span
-          position absolute
-          left 280px
-          top 10px
-          height 36px
+    display block
+    font-size 30px
+    text-align center
+    height 60px
+    line-height 60px
 </style>
