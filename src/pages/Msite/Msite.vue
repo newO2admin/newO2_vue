@@ -198,51 +198,17 @@
     <div class="feed-tab">
       <div class="tab">
         <ul class="tabList">
-          <li class="tabItem" :class="{active:show===index}" v-for="(footItem, index) in datas" :key="index" @click="toShow(index)"><span>{{footItem}}</span></li>
+          <li class="tabItem" 
+          :class="{active:show===index}" 
+          v-for="(footItem, index) in datas" :key="index" 
+          @click="toShow(index)"
+          
+          ><span>{{footItem}}</span></li>
         </ul>
       </div>
     </div>
     <!-- 底部内容 -->
-    <div class="footer">
-      <div class="foot">
-        <div class="footLeft">
-          <ul class="footLeftList">
-            <li class="footLeftItem" v-for="(footItem, index) in rFootDatas" :key="index">
-              <div class="footerBox">
-                <img class="boxImg" v-lazy="footItem.bigImg" alt="">
-                <p class="boxTitle">{{footItem.bigTitle}}</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" v-lazy="footItem.sameImg" alt="">
-                <i class="userName">{{footItem.smallTitle}}</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>{{footItem.number}}</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="footRight">
-          <ul class="footRightList">
-            <li class="footRightItem" v-for="(footItem, index) in lFootDatas" :key="index">
-              <div class="footerBox">
-                <img class="boxImg" v-lazy="footItem.bigImg" alt="">
-                <p class="boxTitle">{{footItem.bigTitle}}</p>
-              </div>
-              <div class="footIcon">
-                <img class="icon1" v-lazy="footItem.sameImg" alt="">
-                <i class="userName">{{footItem.smallTitle}}</i>
-              </div>
-              <div class="footLike">
-                <i>❤</i>
-                <span>{{footItem.number}}</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <Footer :rFootDatas='rFootDatas' :lFootDatas="lFootDatas" />
     <div class="footText">没有更多....</div>
   </div>
 </template>
@@ -251,9 +217,13 @@ import Swiper from 'swiper'
 import BScroll from 'better-scroll'
 import 'swiper/css/swiper.min.css'
 
+import Footer from '../../components/Footer/Footer'
 import datas from '../../data/foot.json'
 import footDatas from '../../data/footItem.json'
   export default {
+    components:{
+      Footer
+    },
     data(){
       return {
         show: 0,
@@ -501,124 +471,7 @@ import footDatas from '../../data/footItem.json'
           z-index 3
           bottom-border-1px(#0FD3B3)
           font-size 38px
-  .footer
-    width 100%
-    background #eee
-    // background pink
-    .foot
-      width 100%
-      // background green
-      box-sizing border-box 
-      padding 0 30px
-      display flex
-      .footLeft
-        width 50%
-        // background #ee5
-        .footLeftList
-          .footLeftItem
-            .footerBox
-              .boxImg
-                border-radius 40px
-              .boxTitle
-                background #fff
-                display block
-                white-space  nowrap
-                overflow hidden
-                text-overflow  ellipsis
-                padding 20px
-            .footIcon
-              background #fff
-              width 50px
-              height  50px
-              border-radius 50%
-              position absolute
-              .icon1
-                z-index 2
-                display block
-                width 40px
-                height 40px
-                border-radius 50%
-                position absolute
-                left 10px
-                top 10px
-              .userName
-                z-index 2
-                display block
-                white-space  nowrap
-                overflow hidden
-                text-overflow  ellipsis
-                position absolute
-                left 60px
-                top 10px
-                width 140px
-                height 36px
-          .footLike
-            background #fff
-            position relative
-            height 50px
-            i 
-              position absolute
-              left 250px
-              top 10px
-              height 36px
-            span
-              position absolute
-              left 280px
-              top 10px
-              height 36px
-      .footRight
-        width 50%
-        background #eee
-        .footerBox
-          .boxImg
-            border-radius 40px
-          .boxTitle
-            background #fff
-            display block
-            white-space  nowrap
-            overflow hidden
-            text-overflow  ellipsis
-            padding 20px
-        .footIcon
-          background #fff
-          width 50px
-          height  50px
-          border-radius 50%
-          position absolute
-          .icon1
-            z-index 2
-            display block
-            width 40px
-            height 40px
-            border-radius 50%
-            position absolute
-            left 10px
-            top 10px
-          .userName
-            z-index 2
-            display block
-            white-space  nowrap
-            overflow hidden
-            text-overflow  ellipsis
-            position absolute
-            left 60px
-            top 10px
-            width 140px
-            height 36px
-      .footLike
-        background #fff
-        position relative
-        height 50px
-        i 
-          position absolute
-          left 250px
-          top 10px
-          height 36px
-        span
-          position absolute
-          left 280px
-          top 10px
-          height 36px
+  
   .footText
     background #eee
     display block
