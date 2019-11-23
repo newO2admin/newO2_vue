@@ -2,11 +2,11 @@
     <div>
       <!-- 头部导航 -->
       <div class="header-nav" :style="{opacity:opacity}" ref="nav">
-        <div class="header-nav-item active">商品</div>
-        <div class="header-nav-item">评价</div>
-        <div class="header-nav-item">日记</div>
-        <div class="header-nav-item">详情</div>
-        <div class="header-nav-item">推荐</div>
+        <div class="header-nav-item" @click="maodian1" :class="{active:scrllTop>=0 && scrllTop<620}">商品</div>
+        <div class="header-nav-item" @click="maodian2" :class="{active:scrllTop>=620 && scrllTop<910}">评价</div>
+        <div class="header-nav-item" @click="maodian3" :class="{active:scrllTop>=910 && scrllTop<1400}">日记</div>
+        <div class="header-nav-item" @click="maodian4" :class="{active:scrllTop>=1400 && scrllTop<4350}">详情</div>
+        <div class="header-nav-item" @click="maodian5" :class="{active:scrllTop>=4350}">推荐</div>
       </div>
       <!-- 底部 -->
       <div class="Ldetail-footer">
@@ -204,7 +204,7 @@
               <p>2、本院为轮诊制，如您指定主任注射需加收注射费500元，指定院长注射需加收注射费1000元。</p>
               <p>
                 <img v-lazy="`https://img2.soyoung.com/tieba/web/20191108/9/e51ab7d54c8f0390b5915aea1fa06bce_570.jpg`" alt="">
-                <img v-lazy="`https://img2.soyoung.com/tieba/web/20191120/5/b3d78f9ff2f45a07916005e057b226cf_570.jpg`" alt="">
+                <img class="p-img" v-lazy="`https://img2.soyoung.com/tieba/web/20191120/5/b3d78f9ff2f45a07916005e057b226cf_570.jpg`" alt="">
               </p>
             </div>
             
@@ -230,8 +230,29 @@
   export default {
     data(){
       return {
-        opacity: 0
+        opacity: 0,
+        isShowLine: false,
+        scrllTop: 0
       }
+    },
+    methods: {
+      maodian1(){
+         this.scroll1.scrollTo(0, 0, 2000)
+      },
+      maodian2(){
+         this.scroll1.scrollTo(0, -620, 2000)
+      },
+      maodian3(){
+         this.scroll1.scrollTo(0, -910, 2000)
+      },
+      maodian4(){
+         this.scroll1.scrollTo(0, -1400, 2000)
+      },
+      maodian5(){
+         this.scroll1.scrollTo(0, -4510, 2000)
+      },
+
+
     },
     computed: {
         
@@ -262,8 +283,10 @@
       })
       this.scroll1.on('scroll', (pos) => {
           this.opacity =  -pos.y/100
-          console.log(this.opacity)
-          console.log(this)
+          this.scrllTop = -pos.y
+          // console.log(this.opacity)
+          // console.log(this)
+          //console.log(this.scrllTop)
       })
       
       
@@ -585,12 +608,13 @@
           margin-top 30px  
           padding 0 30px 30px  
           width 100%
-          img 
-            width 690px
-            height 5058px
-          $:lastchild
-            width 690px
-            height 1380px
+          p
+            img 
+              width 690px
+              height 5058px
+            .p-img
+              width 690px
+              height 1380px
       .tuijian1
         margin-top 30px
         h2
