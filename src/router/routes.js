@@ -6,18 +6,18 @@ import Footer from '../components/Footer/Footer.vue'
 //放置路由
 export default [
   {
-    path: '/msite/:id',
+    path: '/msite',
     component: Msite,
-    childen:[{
-      path:'/msite/footer',
-      component: Footer,
-    },
-    {
-      path:'/msite',
-      redirect: '/msite/footer'
-    }
+    // childen:[{
+    //   path:'/msite/footer',
+    //   component: Footer,
+    // },
+    // {
+    //   path:'/msite',
+    //   redirect: '/msite/footer'
+    // }
     
-    ]
+    // ]
   },
   {
     path:'/categroy',
