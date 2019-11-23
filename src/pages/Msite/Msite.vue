@@ -202,13 +202,12 @@
           :class="{active:show===index}" 
           v-for="(footItem, index) in datas" :key="index" 
           @click="toShow(index)"
-          
           ><span>{{footItem}}</span></li>
         </ul>
       </div>
     </div>
     <!-- 底部内容 -->
-    <Footer :rFootDatas='rFootDatas' :lFootDatas="lFootDatas" />
+    <router-view></router-view>
     <div class="footText">没有更多....</div>
   </div>
 </template>
@@ -262,6 +261,7 @@ import footDatas from '../../data/footItem.json'
       },
       toShow(index){
         this.show = index
+        this.$router.replace(`/msite/${index}`)
       }
     },
     computed:{
