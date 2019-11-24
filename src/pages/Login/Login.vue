@@ -160,7 +160,7 @@
         scrollX: false,
         bounce: false
       })
-      console.log(this.$validator)
+      this.$store.dispatch('autoLoginAction')
     },
     methods: {
       changeSelect() {

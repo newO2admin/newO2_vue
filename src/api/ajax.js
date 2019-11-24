@@ -11,6 +11,17 @@ instance.interceptors.request.use(
       config.data = qs.stringify(config.data)
     }
 
+    let token = localStorage.getItem('token_key')
+    if (config.headers.needToken) {
+      if (token) {
+        console.log(token)
+        config.headers.authorization = token
+      }else {
+        throw new Error('请先登录')
+      }
+    }
+
+
     return config
   }
 )

@@ -28,3 +28,16 @@ export const loginPhoneOrEmail = (phoneOrEmail, pwd) => ajax({
     pwd
   }
 })
+
+//自动登录
+export const autoLogin = () => ajax({
+  url: '/auto_login',
+  headers: {
+    needToken: true
+  }
+})
+
+//获取医美百科
+export const cyclopedia = () => ajax({
+  url: '/yimei_baike'
+})
