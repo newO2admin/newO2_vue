@@ -152,13 +152,5 @@
           height 60px
           &.active
             background green
-  .mask
-    position absolute
-    height 100%
-    width 100%
-    top 90px
-    bottom 0
-    background rgba(0,0,0,0.5)
-    .maskBox
-      wi
+  
 </style>

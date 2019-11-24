@@ -16,6 +16,20 @@ export default [
   {
     path: '/login',
     component: Login
+import Cyclopedia from '../pages/Cyclopedia/Cyclopedia.vue'
+import Footer from '../components/Footer/Footer.vue'
+import Foot from '../components/Footer/Foot.vue'
+//放置路由
+export default [
+  {
+    path: '/msite/:id',
+    component: Msite,
+    children:[
+      {
+        path:'/msite/foot',
+        component: Foot,
+      },
+    ]
   },
   {
     path: '/beautiful',
@@ -69,6 +83,6 @@ export default [
   },
   {
     path: '/',
-    redirect: '/msite'
+    redirect: '/msite/0'
   }
 ] 
