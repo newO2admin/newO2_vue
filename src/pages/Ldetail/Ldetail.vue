@@ -22,7 +22,7 @@
         </div>
         <div class="footer-order">提交订单</div>
         <div class="footer-msg">
-          <div class="iconfont iconzixun nanan"></div>
+          <div class="iconfont icon-zixun nanan"></div>
           <div class="enen">咨询</div>
         </div>
       </div>
