@@ -3,21 +3,18 @@ import Categroy from '../pages/Categroy/Categroy.vue'
 import Sjld from '../pages/Sjld/Sjld.vue'
 import Cyclopedia from '../pages/Cyclopedia/Cyclopedia.vue'
 import Footer from '../components/Footer/Footer.vue'
+import Foot from '../components/Footer/Foot.vue'
 //放置路由
 export default [
   {
-    path: '/msite',
+    path: '/msite/:id',
     component: Msite,
-    // childen:[{
-    //   path:'/msite/footer',
-    //   component: Footer,
-    // },
-    // {
-    //   path:'/msite',
-    //   redirect: '/msite/footer'
-    // }
-    
-    // ]
+    children:[
+      {
+        path:'/msite/foot',
+        component: Foot,
+      },
+    ]
   },
   {
     path:'/categroy',

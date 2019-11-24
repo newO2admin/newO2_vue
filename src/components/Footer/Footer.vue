@@ -44,17 +44,18 @@
 </template>
 
 <script type="text/ecmascript-6">
+ import footDatas from '../../data/footItem.json'
   export default {
-    props:{
-      lFootDatas:{
-        type:Array,
-        required: true,
-      },
-      rFootDatas:{
-        type:Array,
-        required: true,
-      }
-    }
+   data(){
+     return{
+       lFootDatas:[],
+       rFootDatas:[]
+     }
+   },
+   mounted(){
+    this.lFootDatas = footDatas[0]
+    this.rFootDatas = footDatas[1]
+   }
   }
 </script>
 
