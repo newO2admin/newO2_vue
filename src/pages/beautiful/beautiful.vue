@@ -2,7 +2,7 @@
   <div id="beautifulContainer">
     <!-- 返回上一页 头部 -->
     <div class="header" >
-      <span class="back" @click="$router.push('/msite')"> < </span>
+      <span class="back" @click="$router.replace('/msite')"> < </span>
       <span class="title">美丽日记</span>
     </div>
     <!-- 导航 -->
@@ -17,7 +17,7 @@
     <div class="main-body wrapper">
       <div class="content" > 
         <a v-for="(user, index) in userArr" :key="index">
-          <BeautifulShare :user="user"/>
+          <BeautifulShare :user="user" @click="gouser(user)"/>
         </a>
       </div>
     </div>
@@ -50,6 +50,7 @@ import {SAVE_BEAUTIFUL} from '../../store/mutation-type'
         // pullUpLoad: true
         scrollY: true
       })
+      // console.log(this.$router.r)
       this.item = projectInfo.responseData.item
       // this.userArr = user.responseData.list
       this.$store.dispatch('getBeautifulAsync')
@@ -59,6 +60,9 @@ import {SAVE_BEAUTIFUL} from '../../store/mutation-type'
       openlist2(){
         this.isShowList = !this.isShowList
         // console.log(this.isShowList)
+      },
+      gouser(user){
+        this.$router.push('/userbeautiful')
       }
     },
     computed: {
