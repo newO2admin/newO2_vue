@@ -95,6 +95,7 @@
 <script type="text/ecmascript-6">
   import { responseData } from '../../../datas/111.json'
   import BScroll from 'better-scroll'
+  import getCityDatas from '../../api'
   export default {
     data(){
       return {
@@ -199,6 +200,10 @@
         // console.log('xxx')
         // console.log(responseData.menu1_info)
         this.menu1_info = responseData.menu1_info
+        /* 发请求 */
+        let cityDatas = getCityDatas()
+        console.log(cityDatas)
+
         this.scroll1 = new BScroll(this.$refs.wrapper1, {
           scrollX: false,
           scrollY: true,
