@@ -107,7 +107,9 @@
         yijiIndex3: 0,
         son:[],
         son_son: [],
-        name:'面部轮廓'
+        name:'面部轮廓',
+        father_Name: '',
+        //son_Name:'',
 
       }
     },
@@ -137,7 +139,20 @@
         this.yijiIndex = index
         let xyz = this.menu1_info[index]
         this.son = xyz.son
-        //console.log(this.son)
+        this.father_Name = xyz.name
+        console.log(this.son)
+
+        if (this.yijiIndex===0) {
+          this.name = xyz.name
+          console.log('ccc')
+          this.yijiIndex = 0 
+          this.yijiIndex2 = 0
+          this.yijiIndex3 = 0
+
+          this.cityLight = false
+          this.meirongLight = false
+          this.paixuLight = false
+        }
       },
       dianji2(index){
         this.yijiIndex3 = 0
@@ -145,6 +160,17 @@
         let xyz = this.son[index]
         this.son_son = xyz.son
         //console.log(this.son_son)
+        if (!xyz.son) {
+          this.name = this.father_Name
+
+          this.yijiIndex = 0 
+          this.yijiIndex2 = 0
+          this.yijiIndex3 = 0
+
+          this.cityLight = false
+          this.meirongLight = false
+          this.paixuLight = false
+        }
 
       },
 
