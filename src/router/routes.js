@@ -69,6 +69,6 @@ export default [
   },
   {
     path: '/',
-    redirect: '/lcategroy'
+    redirect: '/msite'
   }
 ] 
