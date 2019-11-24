@@ -53,14 +53,25 @@
      }
    },
    mounted(){
-    this.lFootDatas = footItems[0]
-    this.rFootDatas = footItems[1]
+    
     this.$store.dispatch('getFootItemAction')
    },
    computed:{
      ...mapState({
-       footItems: state => state.footItem
-     })
+       footItems: state => state.footItems
+     }),
+     newCategorys(){
+       return this.categorys
+       console.log(this.categorys)
+     }
+   },
+   watch:{
+    footItems(){
+        this.$nextTick(() =>{
+          this.lFootDatas = this.footItems[0]
+          this.rFootDatas = this.footItems[1]
+        })
+      }
    }
   }
 </script>

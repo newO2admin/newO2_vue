@@ -34,7 +34,7 @@
       <div class="navItemChild">
         <ul>
           <li 
-          @click="changeitemChildChild(index)" 
+          @click="changeitemChildChild(index,$event)" 
           v-for="(itemChildChild,index) in itemsChildChild" :key="index"
           :class="{active: showChildChildItem == index }"
           v-show="showChildItem !== 0 && !show"
@@ -80,9 +80,11 @@
         this.showChildItem = index
         this.itemsChildChild = itemChild.item
       },
-      changeitemChildChild(index){
+      changeitemChildChild(index,$event){
         this.showChildChildItem = index
         this.show = !this.show
+        item.name = $event.target.innerHTML
+        console.log($event)
       },
       back(){
        this.$router.replace('/msite')
