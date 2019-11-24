@@ -30,14 +30,14 @@
     </nav>
     <!-- 导航小图标 -->
     <nav class="msite_nav_ico">
-      <div class="ico_container">
+      <div class="swiper-container ico_container">
         <div class="swiper-wrapper ico_wrapper">
           <div class="swiper-slide ico_slide">
-            <a href="javascript:" class="link_to_pro">
+            <a href="javascript:" class="link_to_pro" @click="goPath('/lcategroy')">
               <div class="pro_container">
                 <img src="../../assets/images/nav/1.webp">
               </div>
-              <span>面部轮廓</span>
+              <span>面部跳转</span>
             </a>
             <a href="javascript:" class="link_to_pro">
               <div class="pro_container">
@@ -164,12 +164,12 @@
     <!-- 导航小广告 -->
     <nav class="nav_ad wrapper"> 
       <ul class="ad_list content">
-        <li class="ad_item">
+        <li class="ad_item" @click="goPath('/cyclopedia')">
           <div class="title">医美百科</div>
           <div class="subtitle">项目知识</div>
         </li>
-        <li class="ad_item">
-          <div class="title">医美百科</div>
+        <li class="ad_item" @click="goPath('/sjld')">
+          <div class="title">美丽日记</div>
           <div class="subtitle">项目知识</div>
         </li>
         <li class="ad_item">
@@ -198,18 +198,51 @@
     <div class="feed-tab">
       <div class="tab">
         <ul class="tabList">
-          <li class="tabItem" 
-          :class="{active:show===index}" 
-          v-for="(footItem, index) in datas" :key="index" 
-          @click="toShow(index)"
-          
-          ><span>{{footItem}}</span></li>
+          <li class="tabItem" :class="{active:show===index}" v-for="(footItem, index) in datas" :key="index" @click="toShow(index)"><span>{{footItem}}</span></li>
         </ul>
       </div>
     </div>
     <!-- 底部内容 -->
-    <Footer :rFootDatas='rFootDatas' :lFootDatas="lFootDatas" />
-    <div class="footText">没有更多....</div>
+    <div class="footer">
+      <div class="foot">
+        <div class="footLeft">
+          <ul class="footLeftList">
+            <li class="footLeftItem">
+              <div class="footerBox">
+                <img class="boxImg" src="../../assets/images/ad/foot.webp" alt="">
+                <p class="boxTitle">绝大多数妹纸都面临着一个共同的难题，明明已经过了青春期，可依然挡不住脸上“冒痘”</p>
+              </div>
+              <div class="footIcon">
+                <img class="icon1" src="https://img2.soyoung.com/doctor/20191010/9/97a4293eb6a602ab025051b1162b3573_64_64.png?imageView2/0/format/webp" alt="">
+                <i class="userName">昆明市延安医院杰西艾美容医院</i>
+              </div>
+              <div class="footLike">
+                <i>❤</i>
+                <span>10</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="footRight">
+          <ul class="footRightList">
+            <li class="footRightItem" v-for="(footItem, index) in footDatas" :key="index">
+              <div class="footerBox">
+                <img class="boxImg" :src="footItem.bigImg" alt="">
+                <p class="boxTitle">{{footItem.bigTitle}}</p>
+              </div>
+              <div class="footIcon">
+                <img class="icon1" :src="footItem.sameImg" alt="">
+                <i class="userName">{{footItem.smallTitle}}</i>
+              </div>
+              <div class="footLike">
+                <i>❤</i>
+                <span>{{footItem.number}}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -217,30 +250,26 @@ import Swiper from 'swiper'
 import BScroll from 'better-scroll'
 import 'swiper/css/swiper.min.css'
 
-import Footer from '../../components/Footer/Footer'
 import datas from '../../data/foot.json'
 import footDatas from '../../data/footItem.json'
   export default {
-    components:{
-      Footer
-    },
     data(){
       return {
         show: 0,
         datas:[],
-        lFootDatas:[],
-        rFootDatas:[]
+        footDatas:[]
       }
     },
     mounted(){
       this.datas = datas
-      this.lFootDatas = footDatas[0]
-      this.rFootDatas = footDatas[1]
+      this.footDatas = footDatas
       new BScroll('.wrapper', {
         scrollX: true,
+        click:true
       })
       new BScroll('.tab', {
         scrollX: true,
+        click:true
       })
       new Swiper('.swiper-container', {
         autoplay: true,//可选选项，自动滑动
@@ -253,7 +282,19 @@ import footDatas from '../../data/footItem.json'
           el: '.swiper-pagination',
         },
       })
+    },
+    methods:{
+      goPath(path){
+        this.$router.replace(path)
+      },
+      toShow(index){
+        this.show = index
+      }
+    },
+    computed:{
+    
     }
+
   }
 </script>
 
@@ -266,6 +307,11 @@ import footDatas from '../../data/footItem.json'
     padding 20px
     display flex 
     box-sizing border-box
+    position fixed
+    top 0px
+    left 0px
+    z-index 5
+    background #fff
   .topMain
     display flex 
     .cityName
@@ -284,29 +330,30 @@ import footDatas from '../../data/footItem.json'
       border-radius 20px
       line-height 64px
       background #eee
+      margin-left 10px
       .iconfont
         display block
         position absolute
-        left 0px
+        left 5px
         top 0px
         width 10px
         height 10px
-        z-index 3
-        color red
+        z-index 6
+        color grey
         // background red
       .title
         display block
-        margin-left 10px
+        margin-left 40px
         color grey
   .login-icon
     margin-left 30px
     position absolute
     right 60px
-    top 20px
+    top -80px
     width 60px
     height 60px
   .msite_nav
-    bottom-border-1px(#e4e4e4)
+    margin-top 104px
     height 260px
     background #fff
     box-sizing border-box 
@@ -451,12 +498,126 @@ import footDatas from '../../data/footItem.json'
           z-index 3
           bottom-border-1px(#0FD3B3)
           font-size 38px
-  
-  .footText
+  .footer
+    height 3300px
+    width 100%
     background #eee
-    display block
-    font-size 30px
-    text-align center
-    height 60px
-    line-height 60px
+    // background pink
+    .foot
+      height 3300px
+      width 100%
+      // background green
+      box-sizing border-box 
+      padding 0 30px
+      display flex
+      .footLeft
+        width 50%
+        height 3300px
+        // background #ee5
+        .footLeftList
+          .footLeftItem
+            .footerBox
+              .boxImg
+                border-radius 40px
+              .boxTitle
+                background #fff
+                display block
+                white-space  nowrap
+                overflow hidden
+                text-overflow  ellipsis
+                padding 20px
+            .footIcon
+              background #fff
+              width 50px
+              height  50px
+              border-radius 50%
+              position absolute
+              .icon1
+                z-index 2
+                display block
+                width 40px
+                height 40px
+                border-radius 50%
+                position absolute
+                left 10px
+                top 10px
+              .userName
+                z-index 2
+                display block
+                white-space  nowrap
+                overflow hidden
+                text-overflow  ellipsis
+                position absolute
+                left 60px
+                top 10px
+                width 140px
+                height 36px
+          .footLike
+            background #fff
+            position relative
+            height 50px
+            i 
+              position absolute
+              left 250px
+              top 10px
+              height 36px
+            span
+              position absolute
+              left 280px
+              top 10px
+              height 36px
+      .footRight
+        width 50%
+        height 3300px
+        background #eee
+        .footerBox
+          .boxImg
+            border-radius 40px
+          .boxTitle
+            background #fff
+            display block
+            white-space  nowrap
+            overflow hidden
+            text-overflow  ellipsis
+            padding 20px
+        .footIcon
+          background #fff
+          width 50px
+          height  50px
+          border-radius 50%
+          position absolute
+          .icon1
+            z-index 2
+            display block
+            width 40px
+            height 40px
+            border-radius 50%
+            position absolute
+            left 10px
+            top 10px
+          .userName
+            z-index 2
+            display block
+            white-space  nowrap
+            overflow hidden
+            text-overflow  ellipsis
+            position absolute
+            left 60px
+            top 10px
+            width 140px
+            height 36px
+      .footLike
+        background #fff
+        position relative
+        height 50px
+        i 
+          position absolute
+          left 250px
+          top 10px
+          height 36px
+        span
+          position absolute
+          left 280px
+          top 10px
+          height 36px
 </style>
