@@ -8,6 +8,7 @@ Vue.use(VueLazyLoad, {
 })
 
 import router from './router'
+import store from './store'
 
 Vue.config.productionTip = false
 
@@ -16,7 +17,8 @@ new Vue ({
   components: {App},
   template: '<App />',
   //安装路由
-  router
+  router,
+  store
 })
 // new Vue({
 //   render: h => h(App),

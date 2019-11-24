@@ -1,7 +1,7 @@
 <template>
   <div id="beautifulContainer">
     <div class="header">
-      <span class="back"> < </span>
+      <span class="back" @click="back"> < </span>
       <span class="title">美丽日记</span>
     </div>
     <!-- 导航 -->
@@ -40,14 +40,6 @@
           v-show="showChildItem !== 0 && !show"
           >{{itemChildChild.name}}</li>
         </ul>
-      </div>
-    </div>
-    <div class="mask">
-      <div class="maskBox">
-        <span>X</span>
-        <span>下载app</span>
-        <span>确定</span>
-        <span>取消</span>
       </div>
     </div>
   </div>
@@ -91,6 +83,9 @@
       changeitemChildChild(index){
         this.showChildChildItem = index
         this.show = !this.show
+      },
+      back(){
+       this.$router.replace('/msite')
       }
     }
   }

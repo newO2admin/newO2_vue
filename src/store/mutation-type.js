@@ -1,0 +1,1 @@
+export const SAVE_FOOTITEM = 'save_footitem'
