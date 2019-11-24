@@ -195,10 +195,21 @@
       <img src="../../assets/images/ad/imgAd.png" alt="">
     </div>
     <!-- 底部横向滑动 -->
-    <router-link to="msite/foot"></router-link>
-    <router-view></router-view>
+    <div class="feed-tab">
+      <div class="tab">
+        <ul class="tabList">
+          <li class="tabItem" 
+          :class="{active:show===index}" 
+          v-for="(footItem, index) in datas" :key="index" 
+          @click="toShow(index)"
+          >
+           <span>{{footItem}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
     <!-- 底部内容 -->
-     <router-view></router-view>
+     <Footer/>
     <div class="footText">没有更多....</div>
   </div>
 </template>
@@ -216,14 +227,15 @@ import footDatas from '../../data/footItem.json'
     },
     data(){
       return {
-        
+        show: 0,
+        datas:[],
         lFootDatas:[],
         rFootDatas:[]
       }
     },
     mounted(){
       
-     
+      this.datas = datas
       new BScroll('.wrapper', {
         scrollX: true,
         click:true
@@ -248,7 +260,10 @@ import footDatas from '../../data/footItem.json'
       goPath(path){
         this.$router.replace(path)
       },
-      
+      toShow(index){
+        this.show = index
+        // this.$router.replace(`/msite/${index}`)
+      }
     },
     computed:{
     
