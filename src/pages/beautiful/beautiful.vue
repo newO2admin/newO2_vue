@@ -17,7 +17,7 @@
     <div class="main-body wrapper">
       <div class="content" > 
         <a v-for="(user, index) in userArr" :key="index">
-          <BeautifulShare :user="user" @click="gouser(user)"/>
+          <BeautifulShare :user="user" />
         </a>
       </div>
     </div>
@@ -48,11 +48,13 @@ import {SAVE_BEAUTIFUL} from '../../store/mutation-type'
     mounted(){
       let bs = new BScroll('.wrapper', {
         // pullUpLoad: true
-        scrollY: true
+        scrollY: true,
+        click:true
       })
       // console.log(this.$router.r)
       this.item = projectInfo.responseData.item
       // this.userArr = user.responseData.list
+      // debugger
       this.$store.dispatch('getBeautifulAsync')
       // this.$store.commit(SAVE_BEAUTIFUL, {userArr})
     },
@@ -61,9 +63,7 @@ import {SAVE_BEAUTIFUL} from '../../store/mutation-type'
         this.isShowList = !this.isShowList
         // console.log(this.isShowList)
       },
-      gouser(user){
-        this.$router.push('/userbeautiful')
-      }
+      
     },
     computed: {
       ...mapState({
