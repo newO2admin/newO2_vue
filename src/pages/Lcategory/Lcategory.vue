@@ -202,7 +202,7 @@
         this.menu1_info = responseData.menu1_info
         /* 发请求 */
         let cityDatas = getCityDatas()
-        console.log(cityDatas)
+        //console.log(cityDatas)
 
         this.scroll1 = new BScroll(this.$refs.wrapper1, {
           scrollX: false,
