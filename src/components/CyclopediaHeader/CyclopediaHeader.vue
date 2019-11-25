@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="g-baikeHeader">
-      <div class="iconfont icon-fanhui fanhui" @click="$router.push('/login')"></div>
+      <div class="iconfont icon-fanhui fanhui" @click="$router.push('/msite')"></div>
       <span></span>
       <i class="iconfont icon-sousu search"></i>
     </header>

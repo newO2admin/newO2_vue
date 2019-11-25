@@ -56,10 +56,6 @@ export default [
     component:Ldetail,
   },
   {
-    path:'/cyclopedia',
-    component:Cyclopedia,
-  },
-  {
     path: '/',
     redirect: '/msite'
   }

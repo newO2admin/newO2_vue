@@ -1,7 +1,7 @@
 <template>
   <div id="g-Login">
     <header>
-      <i class="iconfont icon-quxiao chahao"></i>
+      <i class="iconfont icon-quxiao chahao" @click="$router.push('/msite')"></i>
       <div>
         <span>立即注册</span>
         <i class="iconfont icon-jinru jinru"></i>
