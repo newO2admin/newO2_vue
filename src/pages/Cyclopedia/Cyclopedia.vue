@@ -5,7 +5,15 @@
       <div class="maxRollContent">
         <!-- 导航 -->
         <ul class="g-baikeNav" v-if="cyclopedia[0]">
-          <li class="nav-tab" v-for="(item, index) in cyclopedia" :key="index">
+          <li class="nav-tab">
+            <router-link to="/cyclopedia">
+              <img v-show="$route.path !== '/cyclopedia'" class="icon" :src="cyclopedia[0].navUrl"></img>
+
+              <img v-show="$route.path === '/cyclopedia'" class="icon" :src="cyclopedia[0].navActiveUrl"></img>
+              <span>{{cyclopedia[0].name}}</span>
+            </router-link>
+          </li>
+          <li class="nav-tab" v-for="(item, index) in cyclopedia[1]" :key="index">
             <router-link :to="{path: `/cyclopedia/${item.url}`, query: {Bk: item}}">
               <img v-show="$route.path !== `/cyclopedia/${item.url}`" class="icon" :src="item.navUrl"></img>
 
@@ -14,6 +22,46 @@
             </router-link>
           </li>
         </ul>
+        <!-- 轮播图 -->
+        <div class="g-baikeSwiper" :class="{active:$route.path !== '/cyclopedia'}">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="javascript:;">
+                  <img src="https://img2.soyoung.com/item/20180706/2/20180706114811804.png" alt="">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <img src="https://img2.soyoung.com/item/20180706/1/20180706114937842.jpg" alt="">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="">
+                  <img src="https://img2.soyoung.com/item/20180706/3/20180706115022415.jpg" alt="">
+                </a>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+        <!-- <CyclopediaFooter :detail="cyclopedia[0].detail">
+          <template slot="title"> 
+            <p>— 热搜功效 —</p>
+          </template>
+          <template slot="picture">
+            <ul class="content">
+              <li v-for="(item, index) in cyclopedia[0].nav" :key="index">
+                <a href="javascript:;">
+                  <img :src="item.url" alt="">
+                  <span>{{item.name}}</span>
+                </a>
+              </li>         
+            </ul>
+          </template>
+        </!-->
+
+        <!--  -->
         <router-view></router-view>
       </div>
     </div>
@@ -21,8 +69,11 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Swiper from 'swiper'
+  import 'swiper/css/swiper.min.css'
   import BScroll from 'better-scroll'
   import CyclopediaHeader from '../../components/CyclopediaHeader/CyclopediaHeader'
+  import CyclopediaFooter from "../../components/CyclopediaFooter/CyclopediaFooter"
   import {mapState} from 'vuex'
   export default {
     data() {
@@ -30,7 +81,8 @@
       }
     },
     components: {
-      CyclopediaHeader
+      CyclopediaHeader,
+      CyclopediaFooter
     },
    
     computed: {
@@ -39,14 +91,24 @@
       })
     },
      mounted() {
-      this.$nextTick(() => {
-        new BScroll('.g-maxRoll', {
+      this.$store.dispatch('cyclopediaAction')
+      new Swiper('.swiper-container', {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+        }
+      })
+    },
+    watch: {
+      cyclopedia() {
+        this.$nextTick(() => { 
+          new BScroll('.g-maxRoll', {
           click: true,
           scrollY: true,
           bounce: false
+          })
         })
-      })
-      this.$store.dispatch('cyclopediaAction')
+      }
     }
   }
 </script>
@@ -80,6 +142,14 @@
                 display block
                 font-size 24px
                 color #ffffff
-                text-align center 
+                text-align center
+        .g-baikeSwiper
+          &.active
+            display none 
+          width 100%
+          height 400px
+          .swiper-container
+          img 
+            display block
 
 </style>
