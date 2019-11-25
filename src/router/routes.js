@@ -2,7 +2,7 @@ import Msite from '../pages/Msite/Msite.vue'
 import Categroy from '../pages/Categroy/Categroy.vue'
 import Sjld from '../pages/Sjld/Sjld.vue'
 import Cyclopedia from '../pages/Cyclopedia/Cyclopedia.vue'
-
+import Detail from '../pages/Detail/Detail.vue'
 //放置路由
 export default [
   {
@@ -20,6 +20,10 @@ export default [
   {
     path:'/sjld',
     component:Sjld,
+  },
+  {
+    path:'/detail',
+    component:Detail,
   },
   {
     path: '/',

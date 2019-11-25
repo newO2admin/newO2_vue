@@ -39,11 +39,11 @@
               </div>
               <span>面部跳转</span>
             </a>
-            <a href="javascript:" class="link_to_pro">
+            <a href="javascript:" class="link_to_pro"  @click="goPath('/detail')">
               <div class="pro_container">
                 <img src="../../assets/images/nav/2.webp">
               </div>
-              <span>面部轮廓</span>
+              <span>面部详情</span>
             </a>
             <a href="javascript:" class="link_to_pro">
               <div class="pro_container">
