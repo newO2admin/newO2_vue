@@ -15,6 +15,10 @@ import Sjld from '../pages/Sjld/Sjld.vue'
 //放置路由
 export default [
   {
+    path: '/msite',
+    component: Msite,
+  },
+  {
     path: '/login',
     component: Login
   },
@@ -75,6 +79,6 @@ export default [
   },
   {
     path: '/',
-    redirect: '/msite/0'
+    redirect: '/msite'
   }
 ] 

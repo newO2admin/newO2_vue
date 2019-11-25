@@ -44,7 +44,7 @@
 </template>
 
 <script type="text/ecmascript-6">
- import footDatas from '../../data/footItem.json'
+ import {mapState} from 'vuex'
   export default {
    data(){
      return{
@@ -53,8 +53,25 @@
      }
    },
    mounted(){
-    this.lFootDatas = footDatas[0]
-    this.rFootDatas = footDatas[1]
+    
+    this.$store.dispatch('getFootItemAction')
+   },
+   computed:{
+     ...mapState({
+       footItems: state => state.footItems
+     }),
+     newCategorys(){
+       return this.categorys
+       console.log(this.categorys)
+     }
+   },
+   watch:{
+    footItems(){
+        this.$nextTick(() =>{
+          this.lFootDatas = this.footItems[0]
+          this.rFootDatas = this.footItems[1]
+        })
+      }
    }
   }
 </script>

@@ -2,7 +2,7 @@
   <div id="miste">
    <div class="top">
      <div class="topMain">
-        <span class="cityName">北京市</span>
+        <span class="cityName">北京市></span>
         <span><i class="iconfont icon-caret-down"></i></span>
         <div  class="input">
           <span><i class="iconfont icon-search"></i></span>
@@ -39,11 +39,11 @@
               </div>
               <span>面部跳转</span>
             </a>
-            <a href="javascript:" class="link_to_pro">
+            <a href="javascript:" class="link_to_pro"  @click="goPath('/detail')">
               <div class="pro_container">
                 <img src="../../assets/images/nav/2.webp">
               </div>
-              <span>面部轮廓</span>
+              <span>面部详情</span>
             </a>
             <a href="javascript:" class="link_to_pro">
               <div class="pro_container">
@@ -168,7 +168,7 @@
           <div class="title">医美百科</div>
           <div class="subtitle">项目知识</div>
         </li>
-        <li class="ad_item" @click="goPath('/beautiful')">
+        <li class="ad_item" @click="goPath('/sjld')">
           <div class="title">美丽日记</div>
           <div class="subtitle">项目知识</div>
         </li>
@@ -209,7 +209,7 @@
       </div>
     </div>
     <!-- 底部内容 -->
-     <Footer/>
+    <Footer/>
     <div class="footText">没有更多....</div>
   </div>
 </template>
@@ -234,7 +234,7 @@ import footDatas from '../../data/footItem.json'
       }
     },
     mounted(){
-      
+      // this.$store.dispatch('getFootItemAction')
       this.datas = datas
       new BScroll('.wrapper', {
         scrollX: true,
@@ -262,7 +262,7 @@ import footDatas from '../../data/footItem.json'
       },
       toShow(index){
         this.show = index
-        // this.$router.replace(`/msite/${index}`)
+        this.$router.replace(`/msite/${index}`)
       }
     },
     computed:{
@@ -291,6 +291,7 @@ import footDatas from '../../data/footItem.json'
     .cityName
       vertical-align middle
       position relative
+      top 10px
       font-size 32px
       .iconfont
         position absolute
@@ -322,7 +323,7 @@ import footDatas from '../../data/footItem.json'
   .login-icon
     margin-left 30px
     position absolute
-    right 60px
+    right 40px
     top 20px
     width 60px
     height 60px

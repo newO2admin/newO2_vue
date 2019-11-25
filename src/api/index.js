@@ -1,8 +1,11 @@
 
 import ajax from './ajax'
-import axios from 'axios'
 
- console.log(ajax)
+//lmx
 export const getBeautiful = () => ajax({ 
   url: '/beautiful'
+})
+//czc
+export const getFootItem = () => ajax({
+  url:'/footItem'
 })

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-link :to="`/msite/foot`"></router-link>
     <router-view></router-view>
   </div>
 </template>
