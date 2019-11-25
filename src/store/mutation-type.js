@@ -1,3 +1,3 @@
 
 
-// export const SAVE_ADDRESS = 'save_address'
+export const SAVE_BEAUTIFUL = 'save_beautiful'

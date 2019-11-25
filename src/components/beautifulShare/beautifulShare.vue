@@ -12,7 +12,7 @@
     </div>
     <div class="user_photo">
       <span class="left">
-        <img :src="user.top.img.u" alt="">
+        <img :src="user.top.img.u" alt="" >
         <i>Before</i>
       </span>
       <span class="right">
@@ -44,7 +44,6 @@
         <span class="right">icon图标 {{user.end.favor_cnt}}</span>
       </div>
     </div>
-   
   </div>
 </template>
 
@@ -70,6 +69,9 @@
         classArr = user.item
         return classArr
       }
+    },
+    mounted(){
+      console.log(this.$router)
     }
   }
 </script>
