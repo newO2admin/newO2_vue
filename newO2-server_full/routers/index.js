@@ -204,13 +204,33 @@ router.get('/shops', checkToken, function(req, res) {
   // }, 300)
 })
 
-
+//lmx的请求
 router.get('/beautiful', function(req, res) {
     const data = require('../data/user.json')
     console.log(data)
     res.send({code: 0, data})
 })
+//gjy的请求
+router.get('/yimei_baike', function(req, res) {
+  //  router.get('/index_category', function(req, res) {
+    console.log(res)
+    setTimeout(function () {
+      const data = require('../data/yimeidata.json')
+      console.log(data)
+      res.send({code: 0, data})
+    }, 300)
+    
+  })
 
+//czc底部列表
+router.get('/footItem', function(req, res) {
+  //  router.get('/shops', function(req, res) {
+    // setTimeout(function () {
+      const data = require('../data/footItem.json')
+      console.log(data)
+      res.send({code: 0, data})
+    // }, 300)
+  })
 
 
 
