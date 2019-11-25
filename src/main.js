@@ -6,6 +6,9 @@ import jz from './assets/jz.jpg'
 import router from './router'
 import store from './store'
 // import './veevalidate'
+import * as API from './api'
+
+Vue.prototype.$API = API
 
 Vue.config.productionTip = false
 

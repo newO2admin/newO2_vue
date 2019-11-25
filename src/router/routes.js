@@ -52,7 +52,7 @@ export default [
     component:Lcategory,
   },
   {  
-    path:'/ldetail',
+    path:'/ldetail/',
     component:Ldetail,
   },
   {

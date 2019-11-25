@@ -14,11 +14,11 @@
           <div class="footer-total-top">
             <span>预约金 : </span>
             <span class="footer-total-top-number">
-              <em>￥</em>2560
+              <em>￥</em>{{item.price_origin}}
             </span>
             <span class="iconfont iconicontishi"></span>
           </div>
-          <div class="footer-total-bottom">到院再付 ：￥ 998</div>
+          <div class="footer-total-bottom">到院再付 ：￥ {{item.price_origin}}</div>
         </div>
         <div class="footer-order">提交订单</div>
         <div class="footer-msg">
@@ -43,17 +43,17 @@
             <div class="product-other">
               <div class="price">
                 <i>￥</i>
-                <em>980</em>
-                <span>￥951</span>
+                <em>{{item.price_origin}}</em>
+                <span>￥{{item.price_origin}}</span>
                 <img src="//mstatic.soyoung.com/m/static/img/product/vip_user_card.png" alt="">
               </div>
             </div>
-            <div class="product-title">【玻尿酸】【伊婉C玻尿酸】 韩国进口 名医团队注射</div>
+            <div class="product-title">{{item.title}}</div>
             <div class="city-order">
               <span>北京市</span>
               <span class="order-info">
                 <img src="//static.soyoung.com/sy-pre/normal-tan-1572847805017.png " alt="">
-                <span>发起预约数：2537</span>
+                <span>发起预约数：{{item.order_cnt}}</span>
               </span>
             </div>
             <div class="bar"></div>
@@ -67,7 +67,7 @@
             <div class="sales">
               <div class="cuxiao">促销</div>
               <img src="//static.soyoung.com/sy-pre/xian-flag-1560219000655.png" alt="">
-              <div>活动结束恢复¥980</div>
+              <div>活动结束恢复¥{{item.price_origin}}</div>
             </div>
             <div class="bar"></div>
             <div class="flag-class">
@@ -232,7 +232,8 @@
       return {
         opacity: 0,
         isShowLine: false,
-        scrllTop: 0
+        scrllTop: 0,
+        item:{},
       }
     },
     methods: {
@@ -258,6 +259,7 @@
         
     },
     mounted(){
+      //window.scrollTo(0,0)
       new Swiper('.swiper-container',{
         autoplay: false,//可选选项，自动滑动
          pagination: {
@@ -289,8 +291,9 @@
           //console.log(this.scrllTop)
       })
       
-      
-
+      /* 路由传参问题  数据异步分发问题 */
+      this.item = JSON.parse(sessionStorage.getItem('item'))
+      console.log(this.item)
     }
 
   }
@@ -346,8 +349,8 @@
               font-size 30px 
               color #FF527F
             em
-              font-size 60px 
-              line-height 60px
+              font-size 50px 
+              line-height 50px
               color #FF527F 
             span 
               font-size 24px 
@@ -364,7 +367,12 @@
           padding 0px 30px  
           margin 30px 0px
           font-size 34px
-          color #333  
+          color #333 
+          overflow : hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical; 
         .city-order
           width 100%
           height 36px
