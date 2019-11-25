@@ -29,7 +29,7 @@
         <span class="topci_text">{{item.item_name}}</span>
       </span>
     </div>
-    <p class="pirce">
+    <p class="pirce"  @click="goUser()">
       <i></i>
       <span class="place">
         <span>【{{user.end.item_name}}】</span>
@@ -72,6 +72,12 @@
     },
     mounted(){
       console.log(this.$router)
+    },
+    methods:{
+      goUser(){
+        // console.log("1111111111")
+        this.$router.push('/userbeautiful')
+      }
     }
   }
 </script>

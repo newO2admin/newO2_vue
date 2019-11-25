@@ -33,7 +33,7 @@
       <div class="swiper-container ico_container">
         <div class="swiper-wrapper ico_wrapper">
           <div class="swiper-slide ico_slide">
-            <a href="javascript:" class="link_to_pro" @click="goPath('/categroy')">
+            <a href="javascript:" class="link_to_pro" @click="goPath('/lcategroy')">
               <div class="pro_container">
                 <img src="../../assets/images/nav/1.webp">
               </div>

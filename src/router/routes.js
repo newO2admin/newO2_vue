@@ -8,7 +8,8 @@ import Beautiful from '../pages/beautiful/beautiful.vue'
 import Userbeautiful from '../pages/userBeautiful/userBeautiful.vue'
 
 import Msite from '../pages/Msite/Msite.vue'
-import Categroy from '../pages/Categroy/Categroy.vue'
+import Ldetail from '../pages/Ldetail/Ldetail.vue'
+import Lcategory from '../pages/Lcategory/Lcategory.vue'
 import Sjld from '../pages/Sjld/Sjld.vue'
 // import Cyclopedia from '../pages/Cyclopedia/Cyclopedia.vue'
 //放置路由
@@ -53,8 +54,12 @@ export default [
     ]
   },
   {  
-    path:'/categroy',
-    component:Categroy,
+    path:'/lcategroy',
+    component:Lcategory,
+  },
+  {  
+    path:'/ldetail',
+    component:Ldetail,
   },
   {
     path:'/cyclopedia',
@@ -70,6 +75,6 @@ export default [
   },
   {
     path: '/',
-    redirect: '/cyclopedia'
+    redirect: '/msite'
   }
 ] 
