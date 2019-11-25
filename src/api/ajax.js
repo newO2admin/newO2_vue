@@ -19,19 +19,17 @@ instance.interceptors.request.use(config => {
   if(config.method.toUpperCase() === 'POST' && config.data instanceof Object){
     config.data = qs.stringify(config.data) // {a: xxx, b: yyy} ---> a=xxx&b=yyy
   }
-  
-  // // 批量添加token
-  // let token = localStorage.getItem('token_key')
-  // // 判断是否需要携带token
-  // if(config.headers.needToken){
-  //   if(token){
 
+  let token = localStorage.getItem('token_key')
+  if (config.headers.needToken) {
+    if (token) {
+      // console.log(token)
+      config.headers.authorization = token
+    }else {
+      throw new Error('请先登录')
+    }
+  }
   
-   // horization = token
-  //   }else {
-  //     throw new Error('没有token，请先登录')
-  //   }
-  // }
   return config
 })
 

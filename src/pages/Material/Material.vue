@@ -1,5 +1,5 @@
 <template>
-  <div id="g-baikeMaterial">
+  <div id="g-baikeMaterial" v-if="Bk.detail">
     <CyclopediaFooter :detail="Bk.detail">
       <template slot="title">
         <p>— 热门品牌 —</p>
