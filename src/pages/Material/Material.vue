@@ -1,65 +1,17 @@
 <template>
   <div id="g-baikeMaterial">
-    <CyclopediaFooter>
+    <CyclopediaFooter :detail="Bk.detail">
       <template slot="title">
         <p>— 热门品牌 —</p>
       </template>
       <template slot="picture">
         <ul class="content">
-          <li>
-            <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/5/20180306140651565.jpg" alt="">
-              <span>瘦脸</span>
+          <li v-for="(item, index) in Bk.nav" :key="index">
+            <a href="javascript">
+              <img :src="item.url" alt="">
+              <span>{{item.name}}</span>
             </a>
-          </li>
-          <li>
-            <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/2/20180306140700553.jpg" alt="">
-              <span>瘦腿</span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/0/20180306140704176.jpg" alt="">
-              <span>隆鼻</span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/3/20180306140712290.jpg" alt="">
-              <span>垫下巴</span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <img src="https://img2.soyoung.com/item/20171025/3/20171025223418693.jpg" alt="">
-              <span>韩士生科</span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/6/20180306140723628.jpg" alt="">
-              <span>美白</span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <img src="https://img2.soyoung.com/item/20171103/3/20171103190100493.jpg" alt="">
-              <span>补水保湿</span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/9/20180306140732342.jpg" alt="">
-              <span>丰胸</span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <img src="https://img2.soyoung.com/item/20180306/7/20180306140735385.jpg" alt="">
-              <span>半永久妆</span>
-            </a>
-          </li>          
+          </li>         
         </ul>
       </template>
     </CyclopediaFooter>
@@ -69,8 +21,24 @@
 <script type="text/ecmascript-6">
   import CyclopediaFooter from "../../components/CyclopediaFooter/CyclopediaFooter"
   export default {
+    data() {
+      return {
+        Bk: {}
+      }
+    },
     components: {
       CyclopediaFooter
+    },
+    mounted() {
+      if (sessionStorage.getItem('material')) {
+        let Bk = JSON.parse(sessionStorage.getItem('material'))
+        this.Bk = Bk
+      }else {
+        this.Bk =  this.$route.query.Bk
+      }
+      window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('material', JSON.stringify(this.Bk))
+      })
     }
   }
 </script>

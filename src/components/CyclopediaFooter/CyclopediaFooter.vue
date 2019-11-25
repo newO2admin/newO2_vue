@@ -7,7 +7,7 @@
         <!-- <p>— 热搜功效 —</p> -->
       </div>
       <div class="topSearch-list">
-        <slot name="picture"></slot>
+        <slot name="picture" @click=""></slot>
         <!-- <ul class="content">
           <li>
             <a href="">
@@ -68,102 +68,21 @@
     </div>
     <!-- 详情 -->
     <div class="g-detail">
-      <div>
+      <div v-for="(item, index) in detail" :key="index">
         <div class="topBlank"></div>
         <div class="main">
           <div class="name">
-            <a href="">
-              <p>玻尿酸</p>
+            <a href="javascript:;">
+              <p>{{item.name}}</p>
             </a> 
           </div>
           <ul>
-            <li>
-              <span>注射除皱</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
+            <li v-for="(zooid, index) in item.main" :key="index">
+              <span>{{zooid}}</span>
             </li>
           </ul>
         </div>
       </div>
-      <div>
-        <div class="topBlank"></div>
-        <div class="main">
-          <div class="name">
-            <a href="">
-              <p>玻尿酸</p>
-            </a> 
-          </div>
-          <ul>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="topBlank"></div>
-        <div class="main">
-          <div class="name">
-            <a href="">
-              <p>玻尿酸</p>
-            </a> 
-          </div>
-          <ul>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-            <li>
-              <span>玻尿酸塑型</span>
-            </li>
-          </ul>
-        </div>
-      </div> 
     </div>
   </div>
 </template>
@@ -172,10 +91,18 @@
   import BScroll from 'better-scroll'
   export default {
     mounted() {
-      new BScroll('.topSearch-list', {
-        scrollY: false,
-        scrollX: true
+      this.$nextTick(() => {
+        new BScroll('.topSearch-list', {
+          scrollY: false,
+          scrollX: true
+        })
       })
+    },
+    props: {
+      detail: {
+        type: Array,
+        required: true
+      }
     }
   }
 </script>
@@ -245,10 +172,17 @@
             margin-right 6px
             margin-bottom 4px
             background-color #f5f5f5
-            text-align center 
+            text-overflow clip
+            // text-align center
+            // flex-wrap nowrap
+            display flex
+            justify-content center
             &:nth-child(4n)
               margin-right 0
-            span 
+            span
+              text-overflow clip
+              display flex
+              flex-wrap nowrap
               height 64px
               line-height 64px
               color #333
