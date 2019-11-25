@@ -232,6 +232,24 @@ router.get('/footItem', function(req, res) {
     // }, 300)
   })
 
+  //lp城市数据列表
+router.get('/city_datas', function(req, res) {
+      const data = require('../data/city.json')
+      res.send({code: 0, data})
+  })
+
+  //lp商品默认列表
+  router.get('/default_datas', function(req, res) {
+        const data = require('../data/beijin.json')
+        res.send({code: 0, data})
+    })
+
+      //lp商品筛选列表
+  router.get('/filter_datas', function(req, res) {
+        const data = require('../data/categoryFilter.json')
+        res.send({code: 0, data})
+    })
+
 
 
 
