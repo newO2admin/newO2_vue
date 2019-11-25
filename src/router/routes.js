@@ -10,7 +10,6 @@ import Userbeautiful from '../pages/userBeautiful/userBeautiful.vue'
 import Msite from '../pages/Msite/Msite.vue'
 import Ldetail from '../pages/Ldetail/Ldetail.vue'
 import Lcategory from '../pages/Lcategory/Lcategory.vue'
-import Sjld from '../pages/Sjld/Sjld.vue'
 // import Cyclopedia from '../pages/Cyclopedia/Cyclopedia.vue'
 //放置路由
 export default [
@@ -68,10 +67,6 @@ export default [
   {
     path:'/cyclopedia',
     component:Cyclopedia,
-  },
-  {
-    path:'/sjld',
-    component:Sjld,
   },
   {
     path:'/msite',

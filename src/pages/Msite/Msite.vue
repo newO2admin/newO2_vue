@@ -9,7 +9,7 @@
           <span class="title">瘦脸针</span>
         </div>
       </div>
-     <img class="login-icon" src="//mstatic.soyoung.com/m/static/fe_m/view/home/img/login-713931fb83.png">
+     <img class="login-icon" @click="goPath('/login')" src="//mstatic.soyoung.com/m/static/fe_m/view/home/img/login-713931fb83.png">
    </div>
    <!-- 轮播图 -->
     <nav class="msite_nav">
@@ -33,13 +33,13 @@
       <div class="swiper-container ico_container">
         <div class="swiper-wrapper ico_wrapper">
           <div class="swiper-slide ico_slide">
-            <a href="javascript:" class="link_to_pro" @click="goPath('/categroy')">
+            <a href="javascript:" class="link_to_pro" @click="goPath('/lcategroy')">
               <div class="pro_container">
                 <img src="../../assets/images/nav/1.webp">
               </div>
               <span>面部跳转</span>
             </a>
-            <a href="javascript:" class="link_to_pro"  @click="goPath('/detail')">
+            <a href="javascript:" class="link_to_pro">
               <div class="pro_container">
                 <img src="../../assets/images/nav/2.webp">
               </div>
@@ -168,7 +168,7 @@
           <div class="title">医美百科</div>
           <div class="subtitle">项目知识</div>
         </li>
-        <li class="ad_item" @click="goPath('/sjld')">
+        <li class="ad_item" @click="goPath('/beautiful')">
           <div class="title">美丽日记</div>
           <div class="subtitle">项目知识</div>
         </li>
