@@ -1,5 +1,5 @@
 <template>
-  <div id="g-baikeTool">
+  <div id="g-baikeTool" v-if="Bk.detail">
     <CyclopediaFooter :detail="Bk.detail">
       <template slot="title">
         <p>— 热门仪器 —</p>

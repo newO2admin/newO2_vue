@@ -14,7 +14,7 @@ instance.interceptors.request.use(
     let token = localStorage.getItem('token_key')
     if (config.headers.needToken) {
       if (token) {
-        console.log(token)
+        // console.log(token)
         config.headers.authorization = token
       }else {
         throw new Error('请先登录')

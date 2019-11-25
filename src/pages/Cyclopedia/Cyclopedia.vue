@@ -1,10 +1,10 @@
 <template>
-  <div id="g-baikeContent">
+  <div id="g-baikeContent" v-if="cyclopedia[0]">
     <CyclopediaHeader />
-    <div class="g-maxRoll">
+    <div class="g-maxRoll" >
       <div class="maxRollContent">
         <!-- 导航 -->
-        <ul class="g-baikeNav" v-if="cyclopedia[0]">
+        <ul class="g-baikeNav">
           <li class="nav-tab">
             <router-link to="/cyclopedia">
               <img v-show="$route.path !== '/cyclopedia'" class="icon" :src="cyclopedia[0].navUrl"></img>
@@ -45,8 +45,9 @@
             <div class="swiper-pagination"></div>
           </div>
         </div>
-        <!-- <CyclopediaFooter :detail="cyclopedia[0].detail">
-          <template slot="title"> 
+        <!-- 一级路由的footer -->
+        <CyclopediaFooter v-if="$route.path === '/cyclopedia'" :detail="cyclopedia[0].detail">
+          <template slot="title">
             <p>— 热搜功效 —</p>
           </template>
           <template slot="picture">
@@ -56,12 +57,11 @@
                   <img :src="item.url" alt="">
                   <span>{{item.name}}</span>
                 </a>
-              </li>         
+              </li>
             </ul>
           </template>
-        </!-->
-
-        <!--  -->
+        </CyclopediaFooter>
+        <!-- 二级路由footer -->
         <router-view></router-view>
       </div>
     </div>
@@ -78,26 +78,27 @@
   export default {
     data() {
       return {
+        isShowFooter: true
       }
     },
     components: {
       CyclopediaHeader,
       CyclopediaFooter
     },
-   
+  
     computed: {
       ...mapState({
         cyclopedia: state => state.cyclopedia
       })
     },
-     mounted() {
-      this.$store.dispatch('cyclopediaAction')
-      new Swiper('.swiper-container', {
+    async mounted() {
+      await this.$store.dispatch('cyclopediaAction')
+      new Swiper('.swiper-container',{
         loop: true,
-        pagination: {
-          el: '.swiper-pagination',
-        }
-      })
+          pagination: {
+            el: '.swiper-pagination',
+          }
+       })
     },
     watch: {
       cyclopedia() {
@@ -151,5 +152,8 @@
           .swiper-container
           img 
             display block
+        CyclopediaFooter
+          &.active
+            display none
 
 </style>
