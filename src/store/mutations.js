@@ -1,8 +1,12 @@
+
+
 import {
   SAVE_FOOTITEM,
   SAVE_USER,
   SAVE_TOKEN,
-  SAVE_CYCLOPEDIA
+  SAVE_CYCLOPEDIA,
+  SAVE_CATEGORYS,
+  SAVE_CATEGORYS_ITEM
 } from './mutation-type'
 
 export default{
@@ -26,5 +30,15 @@ export default{
   [SAVE_CYCLOPEDIA](state, {cyclopedia}) {
     // console.log(cyclopedia)
     state.cyclopedia = cyclopedia
+  },
+
+  //保存筛选商家信息lp
+  [SAVE_CATEGORYS](state, {categorys}){
+    state.categorys = categorys
+    //console.log(categorys)
+  },
+  //保存单个商家信息lp
+  [SAVE_CATEGORYS_ITEM](state, {categorysItem}){
+    state.categorysItem = categorysItem
   }
 }

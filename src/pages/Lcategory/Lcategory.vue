@@ -32,20 +32,20 @@
         <div class="blank"></div>
         <div class="wrapper">
           <ul class="product-list">
-            <li class="product-item" v-for="item in 10" :key="item" @click="$router.push('/ldetail')">
+            <li class="product-item" v-for="(item, index) in categoryList" :key="index" @click="itemClick(item)">
               <a href="javascript:" class="link-info">
-                <img class="hot_pic" v-lazy="`https://img2.soyoung.com/post/20191113/7/dc60bd535b2dc189b165050a1500a084_400.png`" alt="">
+                <img class="hot_pic" v-lazy="item.img_cover.u" alt="">
                 <div class="hot_text">
-                  <h3>【面部吸脂】【全脸吸脂升级版】瘦脸紧致提升三合一，逆向V脸提升，不戴头套0压迫，重塑上镜小脸</h3>
-                  <h4>巩敏 北京艺美医疗美容诊所</h4>
-                  <h4>发起预约数: 15131</h4>
+                  <h3>{{item.title}}</h3>
+                  <h4><span>{{item.doctor_name}}</span> {{item.hospital_name}}</h4>
+                  <h4>发起预约数: {{item.order_cnt}}</h4>
                   <div class="price">
                     <span>
                       ¥
-                      <em>12800</em>
+                      <em>{{item.price_origin}}</em>
                     </span>
                     <u>￥</u>
-                    <u>12800</u>
+                    <u>{{item.price_origin}}</u>
                     <img class="vip" src="../../assets/hk.jpg" alt="">
                   </div>
                 </div>
@@ -57,7 +57,7 @@
               <a class="flag-link" href="javascript:">
                 <div class="flag-item">
                   <div class="flag-icon">
-                    <span class="iconfont iconjuan"></span>
+                    <span class="iconfont icon-juan"></span>
                     <span>尾款红包</span>
                   </div>
                   <div class="flag-text">
@@ -89,12 +89,19 @@
           </ul>
         </div>
       </div>
+      <!-- 下遮罩 -->
+      <div class="mask2">
+        
+      </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import { responseData } from '../../../datas/111.json'
+  import { SAVE_CATEGORYS_ITEM } from "../../store/mutation-type";
+  import { mapState } from 'vuex'
+  //import { responseData } from '../../../datas/111.json'
   import BScroll from 'better-scroll'
+  import {getCityDatas} from '../../api'
   export default {
     data(){
       return {
@@ -107,11 +114,64 @@
         yijiIndex3: 0,
         son:[],
         son_son: [],
-        name:'面部轮廓'
+        name:'面部轮廓',
+        father_Name: '',
+        //son_Name:'',
+
+        categoryList:[],
+        FilterName:'',
+        item:{},
 
       }
     },
+    computed: {
+      ...mapState({
+        categorys: state => state.categorys
+      })
+    },
     methods:{
+
+      fn(){
+         if (this.FilterName===this.categorys.result.menu1_name) {
+              this.categoryList = this.categorys.result.product_info
+              console.log( this.categorys.result )
+            } else { 
+              this.categoryList = this.categorys.result.product_info_other
+            }
+            this.yijiIndex = 0 
+            this.yijiIndex2 = 0
+            this.yijiIndex3 = 0
+            this.cityLight = false
+            this.meirongLight = false
+            this.paixuLight = false
+      },
+
+
+      sanjiliandong(){
+
+        this.$store.dispatch('getFilterDatasAction', () => {
+          console.log('ccc')
+         if (this.FilterName===this.categorys.result.menu1_name) {
+              this.categoryList = this.categorys.result.product_info
+              console.log( this.categorys.result )
+            } else { 
+              this.categoryList = this.categorys.result.product_info_other
+            }
+            this.yijiIndex = 0 
+            this.yijiIndex2 = 0
+            this.yijiIndex3 = 0
+            this.cityLight = false
+            this.meirongLight = false
+            this.paixuLight = false
+      })
+
+           
+
+      },
+
+
+
+
       cityLightClick(){
         this.cityLight = !this.cityLight,
         this.meirongLight = false,
@@ -135,36 +195,63 @@
       dianji1(index){
         this.yijiIndex2 = 0
         this.yijiIndex = index
-        let xyz = this.menu1_info[index]
-        this.son = xyz.son
-        //console.log(this.son)
+        //let xyz = this.menu1_info[index]
+        this.son = this.menu1_info[index].son
+        this.father_Name = this.menu1_info[index].name
+        this.FilterName = this.menu1_info[index].name
+
+        if (this.yijiIndex===0) {
+          this.name = this.menu1_info[index].name
+          this.sanjiliandong()
+        }
       },
       dianji2(index){
         this.yijiIndex3 = 0
         this.yijiIndex2 = index
-        let xyz = this.son[index]
-        this.son_son = xyz.son
-        //console.log(this.son_son)
+        this.son_son = this.son[index].son
+        if (!this.son[index].son) {
+          this.name = this.father_Name
+
+          this.sanjiliandong()
+        }
 
       },
 
       dianji3(index){
         this.yijiIndex3 = index
-        let xyz = this.son_son[index]
-        if (!xyz.son) {
-          this.name = xyz.name
+        if (!this.son_son[index].son) {
+          this.name = this.son_son[index].name
 
-          this.yijiIndex = 0 
-          this.yijiIndex2 = 0
-          this.yijiIndex3 = 0
+            this.sanjiliandong()
+          // console.log( this.categorys.result)
+          // if (this.FilterName===this.categorys.result.menu1_name) {
+          //   this.categoryList = this.categorys.result.product_info
+          //   console.log( this.categorys.result )
+          // }
 
-          this.cityLight = false
-          this.meirongLight = false
-          this.paixuLight = false
+          // this.yijiIndex = 0 
+          // this.yijiIndex2 = 0
+          // this.yijiIndex3 = 0
+
+          // this.cityLight = false
+          // this.meirongLight = false
+          // this.paixuLight = false
         }
+      },
+
+      itemClick(item){
+        
+        
+        console.log(item)
+        this.$store.commit(SAVE_CATEGORYS_ITEM, {item})
+        this.item = item
+        sessionStorage.setItem('item', JSON.stringify(this.item))
+        this.$router.push('/ldetail')
       }
 
+
     },
+
     mounted(){
         this.scroll3 = new BScroll('.wrapper', {
             scrollY: true, // 设置纵向滑动
@@ -172,7 +259,31 @@
           })
         // console.log('xxx')
         // console.log(responseData.menu1_info)
-        this.menu1_info = responseData.menu1_info
+        //this.menu1_info = responseData.menu1_info
+        /* 发请求 */
+        this.$API.getCityDatas()
+          .then((res) => {
+            this.menu1_info = res.data.responseData.menu1_info
+          })
+
+        // this.$API.getDefaultDatas()
+        //   .then((res) => {
+        //     this.categoryList = res.data.result.product_info
+        //     //console.log(this.categoryList)
+        //   })
+
+        if (sessionStorage.getItem('categoryList')) {
+          this.categoryList = JSON.parse(sessionStorage.getItem('categoryList'))
+        } else {
+           this.$API.getDefaultDatas()
+            .then((res) => {
+              this.categoryList = res.data.result.product_info
+            })
+        }
+
+
+        
+
         this.scroll1 = new BScroll(this.$refs.wrapper1, {
           scrollX: false,
           scrollY: true,
@@ -203,7 +314,22 @@
           click: true,
         })
       
+
+      // beforeunload 页面刷新之前调用
+      window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('categoryList', JSON.stringify(this.categoryList))
+        // 分别保存的话导致shopDatas和cartShops是两个独立的对象，互相没有引用关联，
+        //sessionStorage.setItem('item', JSON.stringify(this.item))
+        //console.log(this.item)
+      })
+    },
+
+    beforeDestroyed(){
+      sessionStorage.setItem('categoryList', JSON.stringify(this.categoryList))
+      //sessionStorage.setItem('item', JSON.stringify(this.item))
+      console.log(this.item)
     }
+
   }
 </script>
 

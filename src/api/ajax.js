@@ -1,4 +1,5 @@
 
+
 //  对axios进行二次封装
 import qs from 'qs'
 import axios from 'axios'
@@ -19,17 +20,19 @@ instance.interceptors.request.use(config => {
   if(config.method.toUpperCase() === 'POST' && config.data instanceof Object){
     config.data = qs.stringify(config.data) // {a: xxx, b: yyy} ---> a=xxx&b=yyy
   }
-
+  
+  // 批量添加token
   let token = localStorage.getItem('token_key')
-  if (config.headers.needToken) {
-    if (token) {
-      // console.log(token)
+  // 判断是否需要携带token
+  if(config.headers.needToken){
+    if(token){
+      // 1. token携带的方式： 1) cookie 2) 请求参数 3) 放在请求头
       config.headers.authorization = token
     }else {
-      throw new Error('请先登录')
+      throw new Error('没有token，请先登录')
     }
   }
-  
+ 
   return config
 })
 
@@ -39,24 +42,24 @@ instance.interceptors.response.use(
   response => response.data,
   error => {
     
-    // if(!error.response){// 没有发送请求
-    //   //  1. 没有token
-    //   MessageBox.alert(error.message)
-    //   router.currentRoute.path !== '/login' && router.replace('/login')
+    if(!error.response){// 没有发送请求
+      //  1. 没有token
+      MessageBox.alert(error.message)
+      router.currentRoute.path !== '/login' && router.replace('/login')
   
-    // }else {
-    //   // 2. 有token，token过期
-    //   if(error.response.status === 401){
-    //     MessageBox.alert('token已过期，请重新登录')
-    //     router.currentRoute.path !== '/login' && router.replace('/login')
-    //   }else if(error.response.status === 404){
-    //     // 3. 请求404
-    //     MessageBox.alert('请求资源未找到')
-    //   }else {
-    //     // 4. 其他
-    //     MessageBox.alert('请求失败')
-    //   }
-    // }
+    }else {
+      // 2. 有token，token过期
+      if(error.response.status === 401){
+        MessageBox.alert('token已过期，请重新登录')
+        router.currentRoute.path !== '/login' && router.replace('/login')
+      }else if(error.response.status === 404){
+        // 3. 请求404
+        MessageBox.alert('请求资源未找到')
+      }else {
+        // 4. 其他
+        MessageBox.alert('请求失败')
+      }
+    }
   
     console.log(error)
     MessageBox.alert('请求失败')
