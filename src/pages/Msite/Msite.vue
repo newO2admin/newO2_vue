@@ -262,7 +262,7 @@ import footDatas from '../../data/footItem.json'
       },
       toShow(index){
         this.show = index
-        // this.$router.replace(`/msite/${index}`)
+        this.$router.replace(`/msite/${index}`)
       }
     },
     computed:{
