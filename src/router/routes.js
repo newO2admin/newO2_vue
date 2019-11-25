@@ -69,10 +69,6 @@ export default [
     component:Cyclopedia,
   },
   {
-    path:'/msite',
-    component:Msite,
-  },
-  {
     path: '/',
     redirect: '/msite'
   }
