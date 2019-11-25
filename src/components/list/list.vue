@@ -276,9 +276,9 @@
     },
     data(){
       return {
-        classIndex: 0,
-        class2Index:0,
-        class3Index:0,
+        classIndex: null,
+        class2Index:null,
+        class3Index:null,
         second:[],
         third:[]
       }
@@ -304,8 +304,8 @@
     methods:{
       getIndex(index,pro){
         this.classIndex = index
-        this.class2Index = 0
-        this.class3Index = 0
+        this.class2Index = null
+        this.class3Index = null
         this.second = pro.menu2
         // console.log(pro.menu2)
       },

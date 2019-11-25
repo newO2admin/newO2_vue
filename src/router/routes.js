@@ -5,22 +5,31 @@ import Tool from '../pages/Tool/Tool'
 import Zhuye from '../pages/Zhuye/Zhuye'
 import Login from '../pages/Login/Login'
 import Beautiful from '../pages/beautiful/beautiful.vue'
+import Userbeautiful from '../pages/userBeautiful/userBeautiful.vue'
 
 import Msite from '../pages/Msite/Msite.vue'
 import Ldetail from '../pages/Ldetail/Ldetail.vue'
 import Lcategory from '../pages/Lcategory/Lcategory.vue'
-import Sjld from '../pages/Sjld/Sjld.vue'
 // import Cyclopedia from '../pages/Cyclopedia/Cyclopedia.vue'
 //放置路由
 export default [
+  {
+    path: '/msite',
+    component: Msite,
+  },
   {
     path: '/login',
     component: Login
   },
   {
     path: '/beautiful',
-    component: Beautiful
+    component: Beautiful,
+   
   },
+  {
+    path: '/userbeautiful',
+    component: Userbeautiful
+   },
   {
     path: '/cyclopedia',
     component: Cyclopedia,
@@ -58,14 +67,6 @@ export default [
   {
     path:'/cyclopedia',
     component:Cyclopedia,
-  },
-  {
-    path:'/sjld',
-    component:Sjld,
-  },
-  {
-    path:'/msite',
-    component:Msite,
   },
   {
     path: '/',

@@ -12,7 +12,7 @@
     </div>
     <div class="user_photo">
       <span class="left">
-        <img :src="user.top.img.u" alt="">
+        <img :src="user.top.img.u" alt="" >
         <i>Before</i>
       </span>
       <span class="right">
@@ -29,7 +29,7 @@
         <span class="topci_text">{{item.item_name}}</span>
       </span>
     </div>
-    <p class="pirce">
+    <p class="pirce"  @click="goUser()">
       <i></i>
       <span class="place">
         <span>【{{user.end.item_name}}】</span>
@@ -44,7 +44,6 @@
         <span class="right">icon图标 {{user.end.favor_cnt}}</span>
       </div>
     </div>
-   
   </div>
 </template>
 
@@ -69,6 +68,15 @@
         let classArr = []
         classArr = user.item
         return classArr
+      }
+    },
+    mounted(){
+      console.log(this.$router)
+    },
+    methods:{
+      goUser(){
+        // console.log("1111111111")
+        this.$router.push('/userbeautiful')
       }
     }
   }

@@ -1,8 +1,8 @@
 <template>
   <div id="beautifulContainer">
     <!-- 返回上一页 头部 -->
-    <div class="header">
-      <span class="back"> < </span>
+    <div class="header" >
+      <span class="back" @click="$router.replace('/msite')"> < </span>
       <span class="title">美丽日记</span>
     </div>
     <!-- 导航 -->
@@ -17,7 +17,7 @@
     <div class="main-body wrapper">
       <div class="content" > 
         <a v-for="(user, index) in userArr" :key="index">
-          <BeautifulShare :user="user"/>
+          <BeautifulShare :user="user" />
         </a>
       </div>
     </div>
@@ -26,12 +26,14 @@
 
 <script type="text/ecmascript-6">
 import BScroll from 'better-scroll'
+import {mapState} from 'vuex'
 // import PullUp from '@better-scroll/pull-up'
 
 import user from '../../../static/user.json'
 import projectInfo from '../../../static/3.json'
 import BeautifulShare from '../../components/beautifulShare/beautifulShare'
 import List from '../../components/list/list'
+import {SAVE_BEAUTIFUL} from '../../store/mutation-type'
   export default {
     components:{
       BeautifulShare,
@@ -39,7 +41,6 @@ import List from '../../components/list/list'
     },
     data(){
       return {
-        userArr: [],
         item:[],
         isShowList: false
       }
@@ -47,16 +48,27 @@ import List from '../../components/list/list'
     mounted(){
       let bs = new BScroll('.wrapper', {
         // pullUpLoad: true
-        scrollY: true
+        scrollY: true,
+        click:true
       })
+      // console.log(this.$router.r)
       this.item = projectInfo.responseData.item
-      this.userArr = user.responseData.list
+      // this.userArr = user.responseData.list
+      // debugger
+      this.$store.dispatch('getBeautifulAsync')
+      // this.$store.commit(SAVE_BEAUTIFUL, {userArr})
     },
     methods:{
       openlist2(){
         this.isShowList = !this.isShowList
         // console.log(this.isShowList)
-      }
+      },
+      
+    },
+    computed: {
+      ...mapState({
+        userArr: state => state.beautiful.userArr
+      })
     }
   }
 </script>

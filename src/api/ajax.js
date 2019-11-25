@@ -1,4 +1,6 @@
-// 对axios进行二次封装
+
+
+//  对axios进行二次封装
 import qs from 'qs'
 import axios from 'axios'
 import router from '../router'
@@ -59,9 +61,7 @@ instance.interceptors.response.use(
       }
     }
   
-  
-  
-  
+    console.log(error)
     MessageBox.alert('请求失败')
     return new Promise(() => {}) // 手动返回一个状态为pending的promsie实例，保证不会自动进入下一个成功的回调
   }
@@ -70,3 +70,5 @@ instance.interceptors.response.use(
 
 
 export default instance
+
+ 
